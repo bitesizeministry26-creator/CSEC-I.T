@@ -3,4776 +3,2933 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>CSEC Hardware Quest | Learning Lab</title>
-
-<meta name="description"
-content="Interactive CSEC Information Technology Hardware Learning Lab covering specifications, interfaces, PC components and scenario-based problem solving.">
+<title>CSEC IT Learning Lab | Hardware Quest</title>
 
 <style>
-
-/* =========================================================
-   CSEC LEARNING LAB
-   EDUCATION + TECHNOLOGY + GAMING
-   ========================================================= */
-
 :root{
-    --navy:#12304A;
-    --navy-dark:#081C2D;
-    --blue:#2F80ED;
-    --blue-light:#56A4FF;
-    --teal:#20B2AA;
-    --gold:#F2C94C;
-    --coral:#F2994A;
-    --green:#27AE60;
-    --red:#EB5757;
-
-    --white:#F7F9FC;
-    --text:#F7F9FC;
-    --muted:#B8C6D5;
-
-    --card:#173A56;
-    --card-dark:#102D45;
-    --line:rgba(255,255,255,.12);
-
-    --shadow:0 18px 55px rgba(0,0,0,.30);
+  --navy:#12304A;
+  --navy2:#081C2D;
+  --blue:#2F80ED;
+  --sky:#56A4FF;
+  --teal:#20B2AA;
+  --gold:#F2C94C;
+  --orange:#F2994A;
+  --green:#27AE60;
+  --red:#EB5757;
+  --white:#F8FBFF;
+  --muted:#B9C8D6;
+  --card:#102B41;
+  --line:rgba(255,255,255,.12);
+  --shadow:0 18px 50px rgba(0,0,0,.28);
 }
 
 *{
-    box-sizing:border-box;
+  box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    margin:0;
-    font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-    color:var(--text);
-
-    background:
-        radial-gradient(
-            circle at 15% 5%,
-            rgba(47,128,237,.20),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 85% 10%,
-            rgba(32,178,170,.15),
-            transparent 30%
-        ),
-        linear-gradient(
-            180deg,
-            var(--navy-dark),
-            var(--navy) 55%,
-            #0A2337
-        );
-
-    min-height:100vh;
-    overflow-x:hidden;
-}
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-
-    opacity:.08;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.08) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.08) 1px,
-            transparent 1px
-        );
-
-    background-size:40px 40px;
-
-    z-index:-1;
+  margin:0;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:linear-gradient(180deg,var(--navy2),#0b2438 45%,#071724);
+  color:var(--white);
+  line-height:1.5;
 }
 
 button,
-select{
-    font:inherit;
+select,
+input{
+  font:inherit;
 }
 
 button{
-    cursor:pointer;
+  cursor:pointer;
 }
 
 a{
-    color:inherit;
-}
-
-.container{
-    width:min(1180px,92%);
-    margin:auto;
-}
-
-/* =========================================================
-   NAVIGATION
-   ========================================================= */
-
-.topbar{
-    position:sticky;
-    top:0;
-    z-index:50;
-
-    backdrop-filter:blur(18px);
-
-    background:rgba(8,28,45,.92);
-
-    border-bottom:1px solid var(--line);
+  color:var(--sky);
 }
 
 .nav{
-    height:72px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:20px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(8,28,45,.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
 }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    font-weight:900;
-    letter-spacing:.4px;
+.navin{
+  max-width:1200px;
+  margin:auto;
+  padding:12px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
 }
 
-.logo-mark{
-    width:42px;
-    height:42px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:12px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            var(--teal)
-        );
-
-    color:white;
-
-    box-shadow:
-        0 0 25px rgba(47,128,237,.35);
+.brand{
+  font-weight:900;
+  letter-spacing:.4px;
 }
 
-.scorebar{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.brand span{
+  color:var(--gold);
+}
+
+.navlinks{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.navlinks a{
+  color:var(--white);
+  text-decoration:none;
+  padding:7px 10px;
+  border-radius:9px;
+  font-size:.9rem;
+}
+
+.navlinks a:hover{
+  background:rgba(47,128,237,.2);
 }
 
 .xp{
-    font-weight:900;
-    color:var(--gold);
+  background:linear-gradient(135deg,var(--gold),var(--orange));
+  color:#14202a;
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:900;
+  white-space:nowrap;
 }
-
-.progress{
-    width:140px;
-    height:8px;
-
-    background:#27465E;
-
-    border-radius:99px;
-    overflow:hidden;
-}
-
-.progress span{
-    display:block;
-
-    height:100%;
-    width:0;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--blue),
-            var(--teal),
-            var(--gold)
-        );
-
-    transition:width .5s;
-}
-
-/* =========================================================
-   HERO
-   ========================================================= */
 
 .hero{
-    padding:70px 0 45px;
-
-    position:relative;
-}
-
-.hero-grid{
-    display:grid;
-
-    grid-template-columns:
-        1.05fr
-        .95fr;
-
-    gap:45px;
-
-    align-items:center;
+  max-width:1200px;
+  margin:auto;
+  padding:55px 18px 35px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:30px;
+  align-items:center;
 }
 
 .eyebrow{
-    display:inline-flex;
-
-    gap:8px;
-
-    align-items:center;
-
-    padding:8px 12px;
-
-    border:1px solid rgba(86,164,255,.30);
-
-    border-radius:999px;
-
-    background:rgba(47,128,237,.12);
-
-    color:#8CC5FF;
-
-    font-weight:900;
-
-    font-size:.82rem;
+  color:var(--gold);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:1.8px;
+  font-size:.8rem;
 }
 
 h1{
-    font-size:
-        clamp(
-            2.6rem,
-            6vw,
-            5.2rem
-        );
-
-    line-height:.92;
-
-    margin:18px 0;
-
-    letter-spacing:-3px;
+  font-size:clamp(2.3rem,6vw,4.7rem);
+  line-height:.98;
+  margin:10px 0 18px;
 }
 
-.gradient{
-    background:
-        linear-gradient(
-            90deg,
-            #FFFFFF,
-            var(--blue-light),
-            var(--teal),
-            var(--gold)
-        );
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    color:transparent;
+h1 span{
+  color:var(--sky);
 }
 
-.hero p{
-    font-size:1.08rem;
-
-    line-height:1.7;
-
-    color:var(--muted);
-
-    max-width:680px;
+.lead{
+  font-size:1.08rem;
+  color:var(--muted);
+  max-width:700px;
 }
 
-.actions{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-
-    margin-top:25px;
+.heroBtns{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:22px;
 }
 
 .btn{
-    border:1px solid var(--line);
-
-    padding:12px 17px;
-
-    border-radius:13px;
-
-    background:
-        rgba(255,255,255,.05);
-
-    color:white;
-
-    font-weight:850;
-
-    transition:.2s;
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    text-decoration:none;
+  border:0;
+  border-radius:12px;
+  padding:12px 17px;
+  font-weight:900;
+  background:var(--blue);
+  color:white;
+  box-shadow:0 8px 22px rgba(47,128,237,.28);
 }
 
 .btn:hover{
-    transform:translateY(-2px);
-
-    border-color:
-        rgba(86,164,255,.65);
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.25);
+  transform:translateY(-1px);
+  filter:brightness(1.08);
 }
 
-.btn.primary{
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue),
-            #2468C9
-        );
-
-    border:0;
-}
-
-.btn.green{
-    background:
-        linear-gradient(
-            135deg,
-            var(--green),
-            #219653
-        );
-
-    border:0;
+.btn.alt{
+  background:var(--teal);
 }
 
 .btn.gold{
-    background:
-        linear-gradient(
-            135deg,
-            var(--gold),
-            #D8A900
-        );
-
-    border:0;
-
-    color:#182100;
+  background:var(--gold);
+  color:#132334;
 }
 
-.btn.coral{
-    background:
-        linear-gradient(
-            135deg,
-            var(--coral),
-            #E67E22
-        );
-
-    border:0;
+.btn.dark{
+  background:#173b57;
 }
 
-.btn.teal{
-    background:
-        linear-gradient(
-            135deg,
-            var(--teal),
-            #168E88
-        );
-
-    border:0;
+.pcscene{
+  min-height:350px;
+  position:relative;
+  display:grid;
+  place-items:center;
 }
 
-.pc-scene{
-    min-height:430px;
-
-    position:relative;
-
-    border:
-        1px solid
-        rgba(255,255,255,.13);
-
-    border-radius:30px;
-
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(47,128,237,.22),
-            transparent 45%
-        ),
-
-        #0B2438;
-
-    box-shadow:var(--shadow);
-
-    overflow:hidden;
-
-    display:grid;
-
-    place-items:center;
-}
-
-.pc-image{
-    width:88%;
-    height:300px;
-
-    object-fit:cover;
-
-    border-radius:22px;
-
-    opacity:.88;
-
-    filter:
-        saturate(1.05)
-        contrast(1.04);
-
-    transform:translateY(5px);
-
-    box-shadow:
-        0 25px 50px rgba(0,0,0,.5);
-}
-
-.scan{
-    position:absolute;
-
-    left:8%;
-    right:8%;
-
-    height:2px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--teal),
-            transparent
-        );
-
-    animation:
-        scan 3s linear infinite;
-
-    box-shadow:
-        0 0 20px
-        rgba(32,178,170,.7);
-}
-
-@keyframes scan{
-
-    0%{
-        top:18%;
-    }
-
-    100%{
-        top:80%;
-    }
-
-}
-
-.floating{
-    position:absolute;
-
-    padding:8px 11px;
-
-    border-radius:12px;
-
-    background:
-        rgba(8,28,45,.90);
-
-    border:
-        1px solid
-        rgba(255,255,255,.14);
-
-    font-size:.76rem;
-
-    font-weight:900;
-
-    animation:
-        float 3s ease-in-out infinite;
-}
-
-.f1{
-    top:12%;
-    left:8%;
-    color:#8CC5FF;
-}
-
-.f2{
-    top:20%;
-    right:7%;
-    color:var(--gold);
-
-    animation-delay:.7s;
-}
-
-.f3{
-    bottom:12%;
-    left:10%;
-    color:#63E6BE;
-
-    animation-delay:1.2s;
-}
-
-.f4{
-    bottom:16%;
-    right:8%;
-    color:#FFB86B;
-
-    animation-delay:1.8s;
+.pc{
+  width:240px;
+  height:315px;
+  background:linear-gradient(90deg,#162d3e,#29475c 45%,#10283a);
+  border:2px solid #4f7187;
+  border-radius:18px;
+  box-shadow:0 25px 60px rgba(0,0,0,.45);
+  position:relative;
+  animation:float 4s ease-in-out infinite;
 }
 
 @keyframes float{
-
-    50%{
-        transform:translateY(-9px);
-    }
-
+  50%{
+    transform:translateY(-9px) rotateY(3deg);
+  }
 }
 
-/* =========================================================
-   SECTIONS
-   ========================================================= */
-
-.section{
-    padding:70px 0;
+.pc:before{
+  content:"";
+  position:absolute;
+  inset:18px 22px 85px;
+  border-radius:12px;
+  background:#071724;
+  border:1px solid #466477;
 }
 
-.section-head{
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:20px;
-
-    align-items:end;
-
-    margin-bottom:25px;
+.pc .fan{
+  position:absolute;
+  width:72px;
+  height:72px;
+  border:7px dotted var(--sky);
+  border-radius:50%;
+  left:50%;
+  transform:translateX(-50%);
+  animation:spin 1.8s linear infinite;
 }
 
-.kicker{
-    color:#71C7FF;
-
-    font-weight:900;
-
-    text-transform:uppercase;
-
-    font-size:.76rem;
-
-    letter-spacing:2px;
-}
-
-h2{
-    font-size:
-        clamp(
-            1.9rem,
-            4vw,
-            3rem
-        );
-
-    margin:7px 0 0;
-
-    letter-spacing:-1.5px;
-}
-
-.sub{
-    color:var(--muted);
-
-    line-height:1.6;
-
-    max-width:720px;
-}
-
-.grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            4,
-            1fr
-        );
-
-    gap:15px;
-}
-
-.card{
-    background:
-        linear-gradient(
-            180deg,
-            rgba(23,58,86,.98),
-            rgba(16,45,69,.98)
-        );
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 12px 40px rgba(0,0,0,.18);
-
-    transition:.25s;
-
-    position:relative;
-}
-
-.card:hover{
-    transform:
-        translateY(-6px);
-
-    border-color:
-        rgba(86,164,255,.50);
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.3);
-}
-
-.card-img{
-    height:150px;
-
-    width:100%;
-
-    object-fit:cover;
-
-    display:block;
-}
-
-.card-body{
-    padding:17px;
-}
-
-.card h3{
-    margin:
-        0 0 7px;
-}
-
-.card p{
-    color:var(--muted);
-
-    font-size:.9rem;
-
-    line-height:1.55;
-
-    margin:0;
-}
-
-.tag{
-    display:inline-block;
-
-    margin-top:12px;
-
-    font-size:.72rem;
-
-    font-weight:900;
-
-    padding:5px 8px;
-
-    border-radius:8px;
-
-    background:
-        rgba(32,178,170,.12);
-
-    color:#68E0D9;
-}
-
-.card-actions{
-    display:flex;
-
-    gap:8px;
-
-    margin-top:13px;
-
-    flex-wrap:wrap;
-}
-
-.small{
-    font-size:.78rem;
-
-    padding:8px 10px;
-
-    border-radius:9px;
-}
-
-/* =========================================================
-   INTERFACES
-   ========================================================= */
-
-.interface-grid{
-    grid-template-columns:
-        repeat(
-            4,
-            1fr
-        );
-}
-
-.port{
-    min-height:195px;
-
-    padding:18px;
-
-    cursor:pointer;
-}
-
-.port-icon{
-    font-size:2.3rem;
-
-    margin-bottom:12px;
-}
-
-.port .tag{
-    color:#AFCFFF;
-
-    background:
-        rgba(47,128,237,.12);
-}
-
-/* =========================================================
-   GAME PANEL
-   ========================================================= */
-
-.game-panel{
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:25px;
-
-    padding:25px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(23,58,86,.98),
-            rgba(16,45,69,.98)
-        );
-
-    box-shadow:var(--shadow);
-}
-
-/* =========================================================
-   USER NEEDS
-   ========================================================= */
-
-.needs{
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            4,
-            1fr
-        );
-
-    gap:12px;
-}
-
-.need{
-    padding:18px;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:18px;
-
-    background:
-        #102D45;
-
-    text-align:left;
-
-    transition:.2s;
-
-    color:white;
-}
-
-.need:hover{
-    transform:
-        translateY(-3px);
-
-    border-color:
-        rgba(86,164,255,.50);
-}
-
-.need.active{
-    border-color:
-        var(--teal);
-
-    box-shadow:
-        0 0 0 1px
-        var(--teal),
-
-        0 0 25px
-        rgba(32,178,170,.18);
-}
-
-.need .emoji{
-    font-size:2rem;
-}
-
-.need h3{
-    margin:
-        8px 0 5px;
-}
-
-.need p{
-    color:var(--muted);
-
-    font-size:.82rem;
-
-    margin:0;
-}
-
-/* =========================================================
-   BUILDER
-   ========================================================= */
-
-.builder{
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap:22px;
-}
-
-.form-row{
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap:12px;
-}
-
-label{
-    display:block;
-
-    font-weight:800;
-
-    font-size:.82rem;
-
-    color:#DDEBFA;
-}
-
-select{
-    width:100%;
-
-    margin-top:7px;
-
-    padding:12px;
-
-    border-radius:11px;
-
-    border:
-        1px solid
-        var(--line);
-
-    background:
-        #0A2337;
-
-    color:white;
-
-    outline:none;
-}
-
-select:focus{
-    border-color:
-        var(--blue);
-}
-
-.spec-meter{
-    margin-top:18px;
-}
-
-.meter-head{
-    display:flex;
-
-    justify-content:space-between;
-
-    color:var(--muted);
-
-    font-size:.82rem;
-}
-
-.meter{
-    height:12px;
-
-    background:
-        #27465E;
-
-    border-radius:99px;
-
-    overflow:hidden;
-
-    margin-top:7px;
-}
-
-.meter span{
-    display:block;
-
-    height:100%;
-
-    width:0;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--coral),
-            var(--gold),
-            var(--green)
-        );
-
-    transition:.5s;
-}
-
-.build-screen{
-    min-height:390px;
-
-    border-radius:20px;
-
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(32,178,170,.15),
-            transparent 35%
-        ),
-
-        #081C2D;
-
-    border:
-        1px solid
-        var(--line);
-
-    padding:20px;
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-/* COMPUTER CASE */
-
-.case{
-    width:235px;
-
-    height:300px;
-
-    border:
-        3px solid
-        #52718A;
-
-    border-radius:18px;
-
-    margin:25px auto 0;
-
-    position:relative;
-
-    background:
-        linear-gradient(
-            120deg,
-            #19364E,
-            #08131F
-        );
-
-    box-shadow:
-        inset 0 0 50px
-        rgba(32,178,170,.07),
-
-        0 20px 40px
-        #000;
-}
-
-.case::before{
-    content:"";
-
-    position:absolute;
-
-    inset:17px;
-
-    border:
-        1px solid
-        #2D506A;
-
-    border-radius:12px;
-}
-
-.fan{
-    position:absolute;
-
-    width:62px;
-
-    height:62px;
-
-    border:
-        5px dotted
-        var(--teal);
-
-    border-radius:50%;
-
-    right:25px;
-
-    top:28px;
-
-    animation:
-        spin 2s linear infinite;
-
-    box-shadow:
-        0 0 20px
-        rgba(32,178,170,.35);
+.fan.one{
+  top:38px;
 }
 
 .fan.two{
-    top:110px;
-
-    right:25px;
-
-    border-color:
-        var(--blue);
-
-    animation-duration:3s;
+  top:120px;
+  border-color:var(--teal);
 }
 
 @keyframes spin{
-
-    to{
-        transform:
-            rotate(360deg);
-    }
-
+  to{
+    transform:translateX(-50%) rotate(360deg);
+  }
 }
 
-.mobo{
-    position:absolute;
-
-    left:25px;
-
-    top:65px;
-
-    width:105px;
-
-    height:165px;
-
-    border:
-        2px solid
-        #52718A;
-
-    border-radius:7px;
-
-    background:
-        rgba(47,128,237,.06);
+.pc .light{
+  position:absolute;
+  bottom:48px;
+  left:28px;
+  right:28px;
+  height:7px;
+  border-radius:20px;
+  background:linear-gradient(90deg,var(--blue),var(--teal),var(--gold));
+  box-shadow:0 0 18px rgba(86,164,255,.8);
 }
 
-.chip{
-    position:absolute;
-
-    width:42px;
-
-    height:42px;
-
-    background:
-        #19364E;
-
-    border:
-        2px solid
-        var(--blue);
-
-    left:32px;
-
-    top:35px;
+.floatlabel{
+  position:absolute;
+  padding:8px 12px;
+  border-radius:10px;
+  background:#102b41;
+  border:1px solid var(--line);
+  font-weight:800;
+  box-shadow:var(--shadow);
+  animation:float2 3s ease-in-out infinite;
 }
 
-.ramstick{
-    position:absolute;
-
-    width:9px;
-
-    height:65px;
-
-    background:
-        var(--green);
-
-    left:83px;
-
-    top:105px;
-
-    box-shadow:
-        0 0 12px
-        rgba(39,174,96,.5);
+@keyframes float2{
+  50%{
+    transform:translateY(-7px);
+  }
 }
 
-.gpu{
-    position:absolute;
-
-    left:48px;
-
-    bottom:37px;
-
-    width:145px;
-
-    height:28px;
-
-    border:
-        2px solid
-        var(--gold);
-
-    background:
-        #283B48;
+.fl1{
+  top:12%;
+  left:3%;
 }
 
-.build-status{
-    margin-top:15px;
-
-    text-align:center;
-
-    font-weight:900;
+.fl2{
+  top:28%;
+  right:1%;
 }
 
-.compatible{
-    color:
-        #5EE58A;
+.fl3{
+  bottom:17%;
+  left:8%;
 }
 
-.warning{
-    color:
-        var(--gold);
+.fl4{
+  bottom:7%;
+  right:7%;
 }
 
-.bad{
-    color:
-        #FF7777;
+.wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:25px 18px 65px;
 }
 
-/* =========================================================
-   MISSIONS
-   ========================================================= */
-
-.missions{
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            5,
-            1fr
-        );
-
-    gap:12px;
+.section{
+  padding:48px 0 20px;
 }
 
-.mission{
-    padding:17px;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:18px;
-
-    background:
-        #102D45;
-
-    cursor:pointer;
-
-    min-height:160px;
-
-    transition:.2s;
+.sectionhead{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:end;
+  margin-bottom:20px;
 }
 
-.mission:hover{
-    transform:
-        translateY(-5px);
-
-    border-color:
-        var(--coral);
-
-    box-shadow:
-        0 15px 35px
-        rgba(0,0,0,.25);
+h2{
+  font-size:2rem;
+  margin:0;
 }
 
-.mission .num{
-    font-size:.72rem;
-
-    color:
-        #71C7FF;
-
-    font-weight:900;
+.sub{
+  color:var(--muted);
+  margin:4px 0 0;
 }
 
-.mission h3{
-    font-size:1rem;
+.cardgrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
 }
 
-.mission p{
-    font-size:.82rem;
-
-    color:var(--muted);
-
-    line-height:1.45;
+.card{
+  background:linear-gradient(145deg,#14344d,#0e2639);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:17px;
+  box-shadow:0 12px 35px rgba(0,0,0,.18);
 }
 
-/* =========================================================
-   VIDEO
-   ========================================================= */
-
-.video{
-    border-radius:24px;
-
-    overflow:hidden;
-
-    border:
-        1px solid
-        var(--line);
-
-    box-shadow:
-        var(--shadow);
-
-    background:#000;
+.card:hover{
+  border-color:rgba(86,164,255,.55);
+  transform:translateY(-2px);
+  transition:.2s;
 }
 
-.video iframe{
-    display:block;
-
-    width:100%;
-
-    aspect-ratio:16/9;
-
-    border:0;
+.portcard{
+  padding:0;
+  overflow:hidden;
 }
 
-/* =========================================================
-   QUIZ
-   ========================================================= */
-
-.quiz-shell{
-    display:grid;
-
-    grid-template-columns:
-        260px
-        1fr;
-
-    gap:20px;
+.portthumb{
+  height:145px;
+  background:#dfeaf1;
+  display:grid;
+  place-items:center;
 }
 
-.quiz-side{
-    padding:20px;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:20px;
-
-    background:
-        #102D45;
+.portthumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.quiz-score{
-    font-size:3rem;
+.portbody{
+  padding:15px;
+}
 
-    font-weight:950;
+.tag{
+  display:inline-block;
+  background:rgba(32,178,170,.16);
+  color:#7de5df;
+  border:1px solid rgba(32,178,170,.3);
+  padding:4px 8px;
+  border-radius:999px;
+  font-size:.72rem;
+  font-weight:900;
+}
 
-    color:
-        var(--gold);
+.small{
+  font-size:.86rem;
+  color:var(--muted);
+}
+
+.quizbox{
+  background:linear-gradient(145deg,#153a57,#0c263a);
+  border:1px solid rgba(242,201,76,.35);
+  border-radius:18px;
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+
+.progress{
+  height:10px;
+  background:#071724;
+  border-radius:99px;
+  overflow:hidden;
+  margin:14px 0 20px;
+}
+
+.progress i{
+  display:block;
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--blue),var(--teal),var(--gold));
+  transition:.3s;
 }
 
 .question{
-    padding:24px;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:20px;
-
-    background:
-        #102D45;
+  font-size:1.15rem;
+  font-weight:800;
 }
 
-.option{
-    width:100%;
-
-    text-align:left;
-
-    margin-top:10px;
-
-    padding:14px;
-
-    border-radius:13px;
-
-    border:
-        1px solid
-        var(--line);
-
-    background:
-        #173A56;
-
-    color:white;
-
-    transition:.18s;
+.options{
+  display:grid;
+  gap:10px;
+  margin:16px 0;
 }
 
-.option:hover{
-    border-color:
-        var(--blue-light);
-
-    transform:
-        translateX(3px);
+.opt{
+  width:100%;
+  text-align:left;
+  border:1px solid var(--line);
+  background:#102b41;
+  color:white;
+  border-radius:12px;
+  padding:13px;
 }
 
-.option.correct{
-    border-color:
-        var(--green);
-
-    background:
-        rgba(39,174,96,.15);
+.opt:hover{
+  border-color:var(--sky);
+  background:#153a57;
 }
 
-.option.wrong{
-    border-color:
-        var(--red);
-
-    background:
-        rgba(235,87,87,.12);
+.opt.correct{
+  border-color:var(--green);
+  background:rgba(39,174,96,.18);
 }
 
-.quiz-feedback{
-    min-height:25px;
-
-    color:var(--muted);
-
-    margin:15px 0;
+.opt.wrong{
+  border-color:var(--red);
+  background:rgba(235,87,87,.15);
 }
 
-/* =========================================================
-   BADGES
-   ========================================================= */
+.feedback{
+  min-height:28px;
+  color:var(--muted);
+  font-weight:700;
+}
+
+.hardwareimg{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:12px;
+}
+
+.profilegrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.profile{
+  cursor:pointer;
+}
+
+.profile strong{
+  display:block;
+  font-size:1.15rem;
+  margin-bottom:5px;
+}
+
+.builder{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.formgrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+label{
+  display:block;
+  font-size:.82rem;
+  color:var(--muted);
+  font-weight:800;
+  margin-bottom:5px;
+}
+
+select,
+input{
+  width:100%;
+  background:#071c2b;
+  color:white;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:11px;
+}
+
+.machine{
+  min-height:470px;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle at center,rgba(47,128,237,.16),transparent 55%),
+    #091d2d;
+  border-radius:18px;
+  border:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+}
+
+.case{
+  width:245px;
+  height:365px;
+  border:2px solid #58778c;
+  border-radius:16px;
+  background:linear-gradient(90deg,#142f43,#29475b,#11283a);
+  position:relative;
+  box-shadow:0 25px 70px #0008;
+}
+
+.case:before{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border-radius:10px;
+  border:1px solid #6b8da2;
+  background:#071724;
+}
+
+.case .part{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  width:150px;
+  border-radius:7px;
+  border:1px solid #47677c;
+  opacity:.18;
+  transition:.4s;
+}
+
+.case .part.on{
+  opacity:1;
+  box-shadow:0 0 18px rgba(86,164,255,.5);
+}
+
+.cpuP{
+  top:43px;
+  height:35px;
+  background:var(--gold);
+}
+
+.ramP{
+  top:87px;
+  height:65px;
+  background:var(--teal);
+}
+
+.gpuP{
+  top:160px;
+  height:62px;
+  background:var(--blue);
+}
+
+.storeP{
+  top:231px;
+  height:28px;
+  background:var(--orange);
+}
+
+.psuP{
+  top:270px;
+  height:45px;
+  background:#566b7a;
+}
+
+.scorepanel{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:14px 0;
+}
+
+.metric{
+  flex:1;
+  min-width:120px;
+  background:#0b2234;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px;
+}
+
+.metric b{
+  font-size:1.4rem;
+  display:block;
+}
+
+.missions{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.mission{
+  cursor:pointer;
+  min-height:170px;
+}
+
+.video{
+  position:relative;
+  padding-top:56.25%;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:#000;
+}
+
+.video iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
 
 .badges{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
 }
 
 .badge{
-    min-width:140px;
-
-    padding:15px;
-
-    border:
-        1px solid
-        var(--line);
-
-    border-radius:15px;
-
-    background:
-        #102D45;
-
-    text-align:center;
-
-    opacity:.45;
-
-    filter:grayscale(1);
-
-    transition:.3s;
+  padding:12px 15px;
+  border-radius:13px;
+  background:#0e293e;
+  border:1px solid var(--line);
+  font-weight:800;
 }
 
-.badge.unlocked{
-    opacity:1;
-
-    filter:none;
-
-    border-color:
-        rgba(242,201,76,.55);
-
-    box-shadow:
-        0 0 25px
-        rgba(242,201,76,.12);
-
-    transform:
-        translateY(-3px);
+.badge.locked{
+  opacity:.35;
+  filter:grayscale(1);
 }
 
-.badge b{
-    display:block;
-
-    font-size:1.6rem;
-
-    margin-bottom:5px;
+footer{
+  text-align:center;
+  padding:30px 18px;
+  color:var(--muted);
+  border-top:1px solid var(--line);
 }
 
-/* =========================================================
-   MODAL POPUPS
-   ========================================================= */
-
-.modal-backdrop{
-    position:fixed;
-
-    inset:0;
-
-    background:
-        rgba(4,15,25,.80);
-
-    backdrop-filter:
-        blur(8px);
-
-    z-index:100;
-
-    display:none;
-
-    place-items:center;
-
-    padding:20px;
-}
-
-.modal-backdrop.show{
-    display:grid;
+.modalback{
+  position:fixed;
+  inset:0;
+  background:rgba(2,11,18,.78);
+  backdrop-filter:blur(7px);
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
 }
 
 .modal{
-    width:min(720px,100%);
-
-    max-height:88vh;
-
-    overflow:auto;
-
-    border:
-        1px solid
-        rgba(86,164,255,.35);
-
-    border-radius:24px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #173A56,
-            #0B2438
-        );
-
-    box-shadow:
-        0 30px 100px #000;
-
-    animation:
-        pop .22s ease-out;
+  max-width:760px;
+  width:100%;
+  max-height:90vh;
+  overflow:auto;
+  background:linear-gradient(145deg,#153a57,#091e2e);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:22px;
+  box-shadow:0 30px 90px #0009;
+  position:relative;
 }
 
-@keyframes pop{
-
-    from{
-        transform:
-            scale(.92)
-            translateY(15px);
-
-        opacity:0;
-    }
-
-    to{
-        transform:none;
-
-        opacity:1;
-    }
-
+.close{
+  position:absolute;
+  right:13px;
+  top:10px;
+  border:0;
+  background:#173b57;
+  color:white;
+  border-radius:50%;
+  width:36px;
+  height:36px;
+  font-size:1.2rem;
 }
 
-.modal-img{
-    width:100%;
-
-    max-height:310px;
-
-    object-fit:cover;
+.modal img{
+  max-height:300px;
+  width:100%;
+  object-fit:cover;
+  border-radius:14px;
+  margin:15px 0;
 }
-
-.modal-content{
-    padding:25px;
-}
-
-.modal-close{
-    float:right;
-
-    border:0;
-
-    background:
-        #254761;
-
-    color:white;
-
-    border-radius:10px;
-
-    padding:8px 11px;
-}
-
-.modal-content h2{
-    margin-top:0;
-}
-
-.modal-content p,
-.modal-content li{
-    color:var(--muted);
-
-    line-height:1.65;
-}
-
-.modal-links{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:9px;
-
-    margin-top:18px;
-}
-
-/* =========================================================
-   TOAST + PARTICLES
-   ========================================================= */
 
 .toast{
-    position:fixed;
-
-    right:20px;
-
-    bottom:20px;
-
-    z-index:150;
-
-    padding:13px 17px;
-
-    border-radius:14px;
-
-    background:
-        #173A56;
-
-    border:
-        1px solid
-        var(--teal);
-
-    box-shadow:
-        0 15px 40px #000;
-
-    transform:
-        translateY(120px);
-
-    transition:.3s;
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:#102f45;
+  border:1px solid var(--line);
+  padding:13px 16px;
+  border-radius:12px;
+  z-index:200;
+  display:none;
+  font-weight:800;
 }
 
-.toast.show{
-    transform:none;
+.certificate{
+  background:white;
+  color:#102b41;
+  border:14px double #2F80ED;
+  border-radius:8px;
+  padding:55px 45px;
+  text-align:center;
+  font-family:Georgia,serif;
 }
 
-.particles{
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    z-index:200;
-
-    overflow:hidden;
+.certificate h2{
+  color:#12304A;
+  font-size:2.4rem;
 }
 
-.particle{
-    position:absolute;
-
-    width:6px;
-
-    height:6px;
-
-    border-radius:50%;
-
-    background:
-        var(--gold);
-
-    animation:
-        particle 900ms ease-out forwards;
+.certificate .certname{
+  font-size:2rem;
+  font-weight:bold;
+  border-bottom:2px solid #12304A;
+  display:inline-block;
+  padding:8px 35px;
 }
 
-@keyframes particle{
-
-    to{
-        transform:
-            translate(
-                var(--x),
-                var(--y)
-            )
-            scale(0);
-
-        opacity:0;
-    }
-
+.certseal{
+  font-size:3rem;
 }
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-.footer{
-    padding:
-        40px
-        0
-        70px;
-
-    color:
-        var(--muted);
-
-    font-size:.85rem;
-
-    border-top:
-        1px solid
-        var(--line);
-}
-
-.footer a{
-    color:
-        #71C7FF;
-}
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
 
 @media(max-width:900px){
+  .hero,
+  .builder{
+    grid-template-columns:1fr;
+  }
 
-    .hero-grid,
-    .builder,
-    .quiz-shell{
-        grid-template-columns:1fr;
-    }
+  .cardgrid,
+  .profilegrid{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-    .grid,
-    .interface-grid{
-        grid-template-columns:
-            repeat(
-                2,
-                1fr
-            );
-    }
-
-    .needs{
-        grid-template-columns:
-            repeat(
-                2,
-                1fr
-            );
-    }
-
-    .missions{
-        grid-template-columns:
-            repeat(
-                2,
-                1fr
-            );
-    }
-
+  .missions{
+    grid-template-columns:1fr 1fr;
+  }
 }
 
-@media(max-width:560px){
+@media(max-width:600px){
+  .navlinks{
+    display:none;
+  }
 
-    .grid,
-    .interface-grid,
-    .needs,
-    .missions,
-    .form-row{
-        grid-template-columns:1fr;
-    }
+  .cardgrid,
+  .profilegrid,
+  .missions,
+  .formgrid{
+    grid-template-columns:1fr;
+  }
 
-    .nav{
-        height:62px;
-    }
+  .hero{
+    padding-top:35px;
+  }
 
-    .scorebar .progress{
-        width:80px;
-    }
+  .pcscene{
+    min-height:300px;
+  }
 
-    h1{
-        letter-spacing:-2px;
-    }
-
-    .hero{
-        padding-top:45px;
-    }
-
+  .pc{
+    transform:scale(.82);
+  }
 }
 
-/* =========================================================
-   EXTRA GAMING EFFECTS
-   ========================================================= */
+@media print{
+  body>*:not(#modalBack){
+    display:none!important;
+  }
 
-.level-up{
-    animation:
-        levelUp .6s ease;
+  #modalBack{
+    display:flex!important;
+    position:static;
+    background:white;
+    padding:0;
+  }
+
+  .modal{
+    box-shadow:none;
+    border:0;
+    max-height:none;
+  }
+
+  .certificate{
+    display:block!important;
+  }
 }
-
-@keyframes levelUp{
-
-    0%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.15);
-    }
-
-    100%{
-        transform:scale(1);
-    }
-
-}
-
 </style>
 </head>
 
-
 <body>
 
-<div
-    class="particles"
-    id="particles">
-</div>
+<nav class="nav">
+  <div class="navin">
 
-
-<!-- ======================================================
-     NAVIGATION
-====================================================== -->
-
-<header class="topbar">
-
-<div class="container nav">
-
-    <div class="logo">
-
-        <div class="logo-mark">
-            ⚡
-        </div>
-
-        <span>
-            CSEC Hardware Quest
-        </span>
-
+    <div class="brand">
+      CSEC <span>IT LEARNING LAB</span>
     </div>
 
-
-    <div class="scorebar">
-
-        <span
-            class="xp"
-            id="xpText">
-            0 XP
-        </span>
-
-        <div class="progress">
-
-            <span
-                id="xpBar">
-            </span>
-
-        </div>
-
-        <strong
-            id="levelText">
-            LVL 1
-        </strong>
-
+    <div class="navlinks">
+      <a href="#prior">Start</a>
+      <a href="#ports">Ports</a>
+      <a href="#hardware">Hardware</a>
+      <a href="#builder">Builder</a>
+      <a href="#missions">Missions</a>
+      <a href="#final">Final Boss</a>
     </div>
 
-</div>
+    <div class="xp">
+      XP <span id="xp">0</span>
+    </div>
+
+  </div>
+</nav>
+
+
+<header class="hero">
+
+  <div>
+
+    <div class="eyebrow">
+      Hardware Quest • CSEC Information Technology
+    </div>
+
+    <h1>
+      Build it.<br>
+      <span>Identify it.</span><br>
+      Master it.
+    </h1>
+
+    <p class="lead">
+      A visual, interactive learning lab where you identify real computer ports,
+      explore hardware, build a PC, solve technician missions and finish with
+      a CSEC-style challenge.
+    </p>
+
+    <div class="heroBtns">
+      <a class="btn" href="#prior">
+        Start the Quest
+      </a>
+
+      <button class="btn alt" onclick="openCertificate()">
+        View Certificate
+      </button>
+    </div>
+
+  </div>
+
+
+  <div class="pcscene">
+
+    <div class="floatlabel fl1">CPU</div>
+    <div class="floatlabel fl2">RAM</div>
+    <div class="floatlabel fl3">GPU</div>
+    <div class="floatlabel fl4">SSD</div>
+
+    <div class="pc">
+      <div class="fan one"></div>
+      <div class="fan two"></div>
+      <div class="light"></div>
+    </div>
+
+  </div>
 
 </header>
 
 
-
-<main>
-
-
-<!-- ======================================================
-     HERO
-====================================================== -->
-
-<section class="hero">
-
-<div class="container hero-grid">
+<main class="wrap">
 
 
-<div>
+<!-- PRIOR KNOWLEDGE -->
 
-<span class="eyebrow">
-🎮 CSEC IT • LEARNING LAB
-</span>
+<section class="section" id="prior">
 
+  <div class="sectionhead">
 
-<h1>
+    <div>
+      <h2>1. Mission Brief: Prior Knowledge</h2>
+      <p class="sub">
+        10 quick questions. Your answers unlock your starting XP.
+      </p>
+    </div>
 
-Build it.<br>
-
-<span class="gradient">
-Spec it.
-</span>
-
-<br>
-
-Solve it.
-
-</h1>
+  </div>
 
 
-<p>
+  <div class="quizbox">
 
-Welcome to the CSEC Hardware Quest.
+    <div id="priorQuestion" class="question"></div>
 
-Explore real computer hardware, discover interfaces,
-solve technician missions and build a computer based
-on the needs of a real user.
+    <div class="progress">
+      <i id="priorProgress"></i>
+    </div>
 
-Every correct decision earns XP.
+    <div id="priorOptions" class="options"></div>
 
-</p>
+    <div id="priorFeedback" class="feedback"></div>
 
+    <button
+      class="btn"
+      id="priorNext"
+      onclick="nextPrior()"
+      style="display:none">
+      Next Question
+    </button>
 
-<div class="actions">
-
-<a
-    class="btn primary"
-    href="#prior-quiz">
-
-▶ Start Mission
-
-</a>
-
-
-<a
-    class="btn"
-    href="#pc-builder">
-
-🛠 Build a PC
-
-</a>
-
-
-<a
-    class="btn"
-    href="#video">
-
-🎬 Watch Build
-
-</a>
-
-</div>
-
-
-<p
-    style="
-    font-size:.82rem;
-    margin-top:18px;
-    ">
-
-CSEC Information Technology • Hardware & Software Fundamentals
-
-</p>
-
-</div>
-
-
-
-<!-- COMPUTER VISUAL -->
-
-<div class="pc-scene">
-
-<img
-
-    class="pc-image"
-
-    src="https://images.unsplash.com/photo-1593640495253-23196b27a87f?auto=format&fit=crop&w=1200&q=85"
-
-    alt="Desktop computer setup"
-
->
-
-
-<div class="scan"></div>
-
-
-<div class="floating f1">
-CPU • PROCESSING
-</div>
-
-
-<div class="floating f2">
-GPU • GRAPHICS
-</div>
-
-
-<div class="floating f3">
-RAM • MEMORY
-</div>
-
-
-<div class="floating f4">
-SSD • STORAGE
-</div>
-
-</div>
-
-
-</div>
+  </div>
 
 </section>
 
 
+<!-- PORTS -->
 
-<!-- ======================================================
-     PRIOR KNOWLEDGE QUIZ
-====================================================== -->
+<section class="section" id="ports">
 
-<section
-    class="section"
-    id="prior-quiz">
+  <div class="sectionhead">
 
-<div class="container">
+    <div>
+      <h2>2. Ports & Cables Lab</h2>
 
+      <p class="sub">
+        Don't just memorize the name. Learn to recognize the physical port.
+      </p>
+    </div>
 
-<div class="section-head">
+    <span class="tag">
+      INTERACTIVE
+    </span>
 
-<div>
+  </div>
 
-<div class="kicker">
-01 • KNOWLEDGE SCAN
-</div>
-
-<h2>
-Prior Knowledge Quiz
-</h2>
-
-</div>
-
-
-<p class="sub">
-
-10 questions. Shuffled every time.
-
-Use this as your entry scan before entering the Hardware Lab.
-
-</p>
-
-</div>
-
-
-
-<div class="quiz-shell">
-
-
-<aside class="quiz-side">
-
-<div class="kicker">
-MISSION SCORE
-</div>
-
-
-<div
-    class="quiz-score"
-    id="quizScore">
-
-0/10
-
-</div>
-
-
-<p class="sub">
-
-Answer all ten.
-
-Your score becomes part of your technician profile.
-
-</p>
-
-
-<button
-    class="btn small"
-    onclick="restartQuiz()">
-
-↻ Shuffle & Restart
-
-</button>
-
-</aside>
-
-
-
-<div
-    class="question"
-    id="quizCard">
-
-</div>
-
-
-</div>
-
-</div>
+  <div class="cardgrid" id="portGrid"></div>
 
 </section>
 
 
+<!-- HARDWARE -->
 
-<!-- ======================================================
-     INTERFACE LAB
-====================================================== -->
+<section class="section" id="hardware">
 
-<section
-    class="section"
-    id="interfaces">
+  <div class="sectionhead">
 
-<div class="container">
+    <div>
+      <h2>3. Hardware Lab</h2>
 
+      <p class="sub">
+        Click a component, study it, then prove what you know.
+      </p>
+    </div>
 
-<div class="section-head">
+  </div>
 
-<div>
-
-<div class="kicker">
-02 • INTERFACE LAB
-</div>
-
-<h2>
-Click a port. Open the intel.
-</h2>
-
-</div>
-
-
-<p class="sub">
-
-Click an interface to open its information panel.
-
-</p>
-
-</div>
-
-
-<div
-    class="grid interface-grid"
-    id="interfaceGrid">
-
-</div>
-
-
-</div>
+  <div class="cardgrid" id="hardwareGrid"></div>
 
 </section>
 
 
+<!-- USER NEEDS -->
 
-<!-- ======================================================
-     HARDWARE LAB
-====================================================== -->
+<section class="section" id="needs">
 
-<section
-    class="section"
-    id="hardware">
+  <div class="sectionhead">
 
-<div class="container">
+    <div>
+      <h2>4. Choose the User</h2>
 
+      <p class="sub">
+        Different users need different specifications.
+      </p>
+    </div>
 
-<div class="section-head">
+  </div>
 
-<div>
-
-<div class="kicker">
-03 • HARDWARE LAB
-</div>
-
-<h2>
-Meet the components.
-</h2>
-
-</div>
-
-
-<p class="sub">
-
-Real-world visuals + CSEC-focused explanations.
-
-Click any card for a deeper mission brief.
-
-</p>
-
-</div>
-
-
-<div
-    class="grid"
-    id="hardwareGrid">
-
-</div>
-
-
-</div>
+  <div class="profilegrid" id="profileGrid"></div>
 
 </section>
 
 
+<!-- BUILDER -->
 
-<!-- ======================================================
-     USER NEEDS
-====================================================== -->
+<section class="section" id="builder">
 
-<section
-    class="section"
-    id="needs">
+  <div class="sectionhead">
 
-<div class="container">
+    <div>
+      <h2>5. PC Builder Challenge</h2>
 
+      <p class="sub">
+        Build a machine that actually fits the user's needs.
+      </p>
+    </div>
 
-<div class="section-head">
-
-<div>
-
-<div class="kicker">
-04 • USER NEEDS
-</div>
-
-<h2>
-Build for the mission, not the hype.
-</h2>
-
-</div>
+  </div>
 
 
-<p class="sub">
-
-A good technician matches specifications
-to the user's actual task.
-
-</p>
-
-</div>
+  <div class="builder">
 
 
-<div class="game-panel">
+    <div class="card">
+
+      <div class="formgrid">
+
+        <div>
+          <label>Target User</label>
+          <select id="target" onchange="selectProfile()"></select>
+        </div>
+
+        <div>
+          <label>CPU</label>
+          <select id="cpu" onchange="updateBuild()"></select>
+        </div>
+
+        <div>
+          <label>RAM</label>
+          <select id="ram" onchange="updateBuild()"></select>
+        </div>
+
+        <div>
+          <label>Storage</label>
+          <select id="storage" onchange="updateBuild()"></select>
+        </div>
+
+        <div>
+          <label>GPU</label>
+          <select id="gpu" onchange="updateBuild()"></select>
+        </div>
+
+        <div>
+          <label>PSU</label>
+          <select id="psu" onchange="updateBuild()"></select>
+        </div>
+
+      </div>
 
 
-<div
-    class="needs"
-    id="needsGrid">
+      <div class="scorepanel">
 
-</div>
+        <div class="metric">
+          <span>Fit</span>
+          <b id="fit">0%</b>
+        </div>
+
+        <div class="metric">
+          <span>Build XP</span>
+          <b id="buildxp">0</b>
+        </div>
+
+        <div class="metric">
+          <span>Status</span>
+          <b id="status">Waiting</b>
+        </div>
+
+      </div>
 
 
-<div
-    id="needBrief"
-    style="
-        margin-top:18px;
-        color:var(--muted);
-    ">
+      <button
+        class="btn gold"
+        onclick="randomBuild()">
+        Random Loadout
+      </button>
 
-Choose a user profile to receive
-a recommended specification.
+      <button
+        class="btn alt"
+        onclick="gradeBuild()">
+        Grade My Build
+      </button>
 
-</div>
+    </div>
 
 
-</div>
+    <div class="machine">
 
-</div>
+      <div class="case">
+
+        <div class="part cpuP" id="pcpu"></div>
+        <div class="part ramP" id="pram"></div>
+        <div class="part gpuP" id="pgpu"></div>
+        <div class="part storeP" id="pstorage"></div>
+        <div class="part psuP" id="ppsu"></div>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
 
+<!-- MISSIONS -->
 
-<!-- ======================================================
-     PC BUILDER
-====================================================== -->
+<section class="section" id="missions">
 
-<section
-    class="section"
-    id="pc-builder">
+  <div class="sectionhead">
 
-<div class="container">
+    <div>
+      <h2>6. Technician Missions</h2>
 
+      <p class="sub">
+        Real-world scenarios. Diagnose before you answer.
+      </p>
+    </div>
 
-<div class="section-head">
+  </div>
 
-<div>
-
-<div class="kicker">
-05 • PC BUILDER
-</div>
-
-<h2>
-Assemble the right machine.
-</h2>
-
-</div>
-
-
-<p class="sub">
-
-Change a component and watch the build score update.
-
-The goal is suitability — not simply the most expensive parts.
-
-</p>
-
-</div>
-
-
-
-<div class="game-panel builder">
-
-
-<div>
-
-
-<div class="form-row">
-
-
-<label>
-
-CPU
-
-<select id="cpu">
-</select>
-
-</label>
-
-
-
-<label>
-
-RAM
-
-<select id="ram">
-</select>
-
-</label>
-
-
-
-<label>
-
-Storage
-
-<select id="storage">
-</select>
-
-</label>
-
-
-
-<label>
-
-GPU
-
-<select id="gpu">
-</select>
-
-</label>
-
-
-
-<label>
-
-Power Supply
-
-<select id="psu">
-</select>
-
-</label>
-
-
-
-<label>
-
-Target User
-
-<select id="target">
-</select>
-
-</label>
-
-
-</div>
-
-
-
-<div class="spec-meter">
-
-
-<div class="meter-head">
-
-<span>
-Mission Fit
-</span>
-
-<strong
-    id="fitScore">
-
-0%
-
-</strong>
-
-</div>
-
-
-<div class="meter">
-
-<span
-    id="fitBar">
-</span>
-
-</div>
-
-</div>
-
-
-
-<div
-    id="buildMessage"
-    class="build-status">
-
-Choose a target and components.
-
-</div>
-
-
-
-<div class="actions">
-
-
-<button
-    class="btn green"
-    onclick="evaluateBuild()">
-
-⚡ Run Diagnostics
-
-</button>
-
-
-<button
-    class="btn gold"
-    onclick="randomBuild()">
-
-🎲 Random Loadout
-
-</button>
-
-
-</div>
-
-
-</div>
-
-
-
-<!-- LIVE COMPUTER -->
-
-<div class="build-screen">
-
-
-<div class="kicker">
-LIVE SYSTEM MODEL
-</div>
-
-
-<div class="case">
-
-
-<div class="fan">
-</div>
-
-
-<div class="fan two">
-</div>
-
-
-<div class="mobo">
-
-<div class="chip">
-</div>
-
-</div>
-
-
-<div class="ramstick">
-</div>
-
-
-<div class="gpu">
-</div>
-
-
-</div>
-
-
-<div
-    id="buildSpecs"
-    class="build-status">
-
-No loadout selected
-
-</div>
-
-
-</div>
-
-
-</div>
-
-</div>
+  <div class="missions" id="missionGrid"></div>
 
 </section>
 
 
+<!-- VIDEO -->
 
-<!-- ======================================================
-     TECHNICIAN MISSIONS
-====================================================== -->
+<section class="section">
 
-<section
-    class="section"
-    id="missions">
+  <div class="sectionhead">
 
-<div class="container">
+    <div>
+      <h2>7. Watch & Learn</h2>
 
+      <p class="sub">
+        Use the video to reinforce PC-building concepts.
+      </p>
+    </div>
 
-<div class="section-head">
-
-<div>
-
-<div class="kicker">
-06 • TECHNICIAN MISSIONS
-</div>
-
-<h2>
-Fix the problem. Explain the choice.
-</h2>
-
-</div>
+  </div>
 
 
-<p class="sub">
+  <div class="video">
 
-Scenario-based tasks push students beyond memorising definitions.
+    <iframe
+      src="https://www.youtube.com/embed/PXaLc9AYIcg"
+      title="PC building tutorial"
+      allowfullscreen>
+    </iframe>
 
-</p>
-
-</div>
-
-
-
-<div
-    class="missions"
-    id="missionGrid">
-
-</div>
-
-
-</div>
+  </div>
 
 </section>
 
 
+<!-- FINAL BOSS -->
 
-<!-- ======================================================
-     VIDEO
-====================================================== -->
+<section class="section" id="final">
 
-<section
-    class="section"
-    id="video">
+  <div class="sectionhead">
 
-<div class="container">
+    <div>
 
+      <h2>
+        8. Final Boss: CSEC Challenge
+      </h2>
 
-<div class="section-head">
+      <p class="sub">
+        Finish strong. Your final performance determines your rank.
+      </p>
 
-<div>
+    </div>
 
-<div class="kicker">
-07 • WATCH & LEARN
-</div>
-
-<h2>
-PC Build Video
-</h2>
-
-</div>
+  </div>
 
 
-<p class="sub">
+  <div class="quizbox">
 
-Pause the video and identify the component
-or installation step being shown.
+    <div
+      id="finalQuestion"
+      class="question">
+      Click Start Final Boss when you're ready.
+    </div>
 
-</p>
+    <div class="progress">
+      <i id="finalProgress"></i>
+    </div>
 
-</div>
+    <div
+      id="finalOptions"
+      class="options">
+    </div>
 
+    <div
+      id="finalFeedback"
+      class="feedback">
+    </div>
 
+    <button
+      class="btn"
+      id="finalStart"
+      onclick="startFinal()">
+      Start Final Boss
+    </button>
 
-<div class="video">
+    <button
+      class="btn"
+      id="finalNext"
+      onclick="nextFinal()"
+      style="display:none">
+      Next
+    </button>
 
-<iframe
-
-    src="https://www.youtube.com/embed/PXaLc9AYIcg"
-
-    title="How To Build A PC - Step by Step Full Build Guide"
-
-    allow="
-        accelerometer;
-        autoplay;
-        clipboard-write;
-        encrypted-media;
-        gyroscope;
-        picture-in-picture;
-        web-share
-    "
-
-    allowfullscreen>
-
-</iframe>
-
-</div>
-
-
-<p
-    style="
-        color:var(--muted);
-        font-size:.8rem;
-        margin-top:10px;
-    ">
-
-Embedded PC-building walkthrough.
-
-</p>
-
-
-</div>
+  </div>
 
 </section>
 
 
+<!-- BADGES -->
 
-<!-- ======================================================
-     BADGES
-====================================================== -->
+<section class="section">
 
-<section
-    class="section"
-    id="badges">
+  <div class="sectionhead">
 
-<div class="container">
+    <div>
 
+      <h2>Your Badges</h2>
 
-<div class="section-head">
+      <p class="sub">
+        Earn them by actually completing the labs.
+      </p>
 
-<div>
+    </div>
 
-<div class="kicker">
-08 • TECHNICIAN PROFILE
-</div>
+  </div>
 
-<h2>
-Earn your badges.
-</h2>
-
-</div>
-
-</div>
-
-
-
-<div class="badges">
-
-
-<div
-    class="badge"
-    id="badgeQuiz">
-
-<b>
-🧠
-</b>
-
-Knowledge Scanner
-
-</div>
-
-
-
-<div
-    class="badge"
-    id="badgePorts">
-
-<b>
-🔌
-</b>
-
-Interface Scout
-
-</div>
-
-
-
-<div
-    class="badge"
-    id="badgeBuild">
-
-<b>
-🛠️
-</b>
-
-PC Architect
-
-</div>
-
-
-
-<div
-    class="badge"
-    id="badgeMission">
-
-<b>
-🕵️
-</b>
-
-Problem Solver
-
-</div>
-
-
-</div>
-
-</div>
+  <div class="badges" id="badges"></div>
 
 </section>
-
 
 </main>
 
 
-
-<!-- ======================================================
-     FOOTER
-====================================================== -->
-
-<footer class="footer">
-
-<div class="container">
-
-<strong>
-CSEC Hardware Quest
-</strong>
-
-<br>
-
-CSEC Learning Lab Edition
-
-<br><br>
-
-Designed as an interactive learning experience
-for CSEC Information Technology students.
-
-<br><br>
-
-<a
-    href="https://www.cxc.org/subject/information-technology-csec/"
-    target="_blank"
-    rel="noopener">
-
-CXC CSEC Information Technology ↗
-
-</a>
-
-<br><br>
-
-Hardware reference:
-
-<a
-    href="https://commons.wikimedia.org/wiki/Category:Computer_hardware"
-    target="_blank"
-    rel="noopener">
-
-Wikimedia Commons ↗
-
-</a>
-
-</div>
-
+<footer>
+  CSEC IT Learning Lab • Hardware Quest
+  <br>
+  Learn → Identify → Build → Diagnose → Master
 </footer>
 
 
-
-<!-- ======================================================
-     POP-UP MODAL
-====================================================== -->
+<!-- MODAL -->
 
 <div
-    class="modal-backdrop"
-    id="modalBackdrop"
-    onclick="closeModal(event)">
+  class="modalback"
+  id="modalBack"
+  onclick="backdropClose(event)">
 
+  <div class="modal">
 
-<div
-    class="modal"
-    onclick="event.stopPropagation()">
+    <button
+      class="close"
+      onclick="closeModal()">
+      ×
+    </button>
 
+    <div id="modalContent"></div>
 
-<img
-    class="modal-img"
-    id="modalImg"
-    src=""
-    alt=""
->
-
-
-<div class="modal-content">
-
-
-<button
-    class="modal-close"
-    onclick="closeModal()">
-
-✕
-
-</button>
-
-
-<div
-    class="kicker"
-    id="modalKicker">
-
-</div>
-
-
-<h2
-    id="modalTitle">
-
-</h2>
-
-
-<div
-    id="modalBody">
+  </div>
 
 </div>
 
 
 <div
-    class="modal-links"
-    id="modalLinks">
-
+  class="toast"
+  id="toast">
 </div>
-
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<div
-    class="toast"
-    id="toast">
-
-</div>
-
 
 
 <script>
 
-/* =========================================================
-   IMAGE LIBRARY
-   ========================================================= */
+/* ================================
+   GAME STATE
+================================ */
 
-const img = {
-
-    pc:
-    "https://images.unsplash.com/photo-1593640495253-23196b27a87f?auto=format&fit=crop&w=1200&q=85",
-
-    cpu:
-    "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=900&q=85",
-
-    ram:
-    "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=900&q=85",
-
-    gpu:
-    "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=85",
-
-    desk:
-    "https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=900&q=85",
-
-    laptop:
-    "https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=900&q=85",
-
-    server:
-    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=85",
-
-    motherboard:
-    "https://images.unsplash.com/photo-1592664474505-51c549ad15c5?auto=format&fit=crop&w=900&q=85"
-
+const state = {
+  xp:0,
+  ports:new Set(),
+  hardware:new Set(),
+  priorScore:0,
+  finalScore:0,
+  mission:0
 };
 
 
-/* =========================================================
+/* ================================
+   PORTS
+================================ */
+
+const ports = [
+
+{
+name:"USB-A",
+type:"Data / Power",
+img:"https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=900&q=85",
+desc:"A common rectangular USB connector used for peripherals such as keyboards, mice, flash drives and other devices.",
+cable:"USB-A cable",
+tip:"Look for the rectangular shape.",
+link:"https://www.usb.org/"
+},
+
+{
+name:"USB-C",
+type:"Data / Power",
+img:"https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&fit=crop&w=900&q=85",
+desc:"A small reversible connector used for data, charging and, on supported devices, display output.",
+cable:"USB-C cable",
+tip:"Its oval shape is symmetrical and reversible.",
+link:"https://www.usb.org/"
+},
+
+{
+name:"HDMI",
+type:"Display",
+img:"https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=900&q=85",
+desc:"A digital audio/video interface commonly used to connect computers to monitors, TVs and projectors.",
+cable:"HDMI cable",
+tip:"The connector is wider than it is tall.",
+link:"https://www.hdmi.org/"
+},
+
+{
+name:"Ethernet RJ-45",
+type:"Network",
+img:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=85",
+desc:"A wired network connection used to connect a computer to a network or router.",
+cable:"Ethernet cable",
+tip:"Look for the wider network socket.",
+link:"https://standards.ieee.org/ieee/802.3/"
+},
+
+{
+name:"3.5 mm Audio",
+type:"Audio",
+img:"https://images.unsplash.com/photo-1598387993281-cecf8b71a8f8?auto=format&fit=crop&w=900&q=85",
+desc:"An analog audio connection commonly used for headphones, speakers and microphones.",
+cable:"3.5 mm audio cable",
+tip:"It is a small round audio jack.",
+link:"https://www.cablematters.com/"
+},
+
+{
+name:"VGA",
+type:"Display",
+img:"https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=900&q=85",
+desc:"An older analog video interface recognized by its 15-pin connector.",
+cable:"VGA cable",
+tip:"Think trapezoid connector with three rows of pins.",
+link:"https://www.vesa.org/"
+},
+
+{
+name:"DisplayPort",
+type:"Display",
+img:"https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&fit=crop&w=900&q=85",
+desc:"A digital display interface used to connect computers to monitors and other displays.",
+cable:"DisplayPort cable",
+tip:"The connector is roughly rectangular with one angled corner.",
+link:"https://www.vesa.org/"
+},
+
+{
+name:"Wi-Fi / Bluetooth",
+type:"Wireless",
+img:"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85",
+desc:"Wireless technologies that allow devices to communicate without a physical data cable.",
+cable:"No physical data cable required",
+tip:"Wireless connectivity uses radios and antennas.",
+link:"https://www.bluetooth.com/"
+}
+
+];
+
+
+/* ================================
    HARDWARE
-   ========================================================= */
+================================ */
 
 const hardware = [
 
 {
-    name:"CPU",
-    icon:"🧠",
-    image:img.cpu,
-
-    desc:
-    "The Central Processing Unit executes instructions and performs calculations. Think about processing performance when comparing CPUs.",
-
-    tag:"PROCESSING",
-
-    link:
-    "https://www.intel.com/content/www/us/en/products/details/processors/core.html"
+name:"CPU",
+img:"https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7b0?auto=format&fit=crop&w=900&q=85",
+desc:"The central processing unit executes instructions and performs calculations.",
+tip:"Think processing and instructions.",
+link:"https://www.intel.com/content/www/us/en/products/details/processors.html"
 },
 
 {
-    name:"RAM",
-    icon:"⚡",
-    image:img.ram,
-
-    desc:
-    "Random Access Memory temporarily holds data and instructions currently being used. More RAM can help when several applications are open.",
-
-    tag:"MEMORY",
-
-    link:
-    "https://www.kingston.com/en/memory"
+name:"RAM",
+img:"https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=900&q=85",
+desc:"RAM provides fast temporary working space for programs and data currently in use.",
+tip:"Think temporary working memory.",
+link:"https://www.crucial.com/articles/about-memory/what-is-computer-memory"
 },
 
 {
-    name:"GPU",
-    icon:"🎮",
-    image:img.gpu,
-
-    desc:
-    "A Graphics Processing Unit handles graphics and parallel workloads. It becomes especially important for gaming, 3D work and graphics-intensive applications.",
-
-    tag:"GRAPHICS",
-
-    link:
-    "https://www.nvidia.com/en-us/geforce/graphics-cards/"
+name:"SSD",
+img:"https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=900&q=85",
+desc:"Solid-state storage stores files and applications using flash memory.",
+tip:"Think persistent storage.",
+link:"https://www.kingston.com/en/ssd"
 },
 
 {
-    name:"Storage",
-    icon:"💾",
-    image:img.laptop,
-
-    desc:
-    "Storage keeps data when the computer is powered off. SSDs are commonly chosen for fast boot and application loading.",
-
-    tag:"STORAGE",
-
-    link:
-    "https://www.kingston.com/en/ssd"
+name:"GPU",
+img:"https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=85",
+desc:"A graphics processing unit handles graphics workloads.",
+tip:"Especially important for graphics-heavy applications.",
+link:"https://www.nvidia.com/en-us/geforce/graphics-cards/"
 },
 
 {
-    name:"Motherboard",
-    icon:"🧩",
-    image:img.motherboard,
-
-    desc:
-    "The motherboard provides the main platform connecting the CPU, memory, storage, expansion devices and other components.",
-
-    tag:"CONNECTION",
-
-    link:
-    "https://www.intel.com/content/www/us/en/gaming/resources/how-to-choose-a-motherboard.html"
+name:"Motherboard",
+img:"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85",
+desc:"The main circuit board connects major components and provides communication pathways.",
+tip:"It connects many internal components.",
+link:"https://www.asus.com/motherboards-components/motherboards/"
 },
 
 {
-    name:"PSU",
-    icon:"🔋",
-    image:img.server,
-
-    desc:
-    "The Power Supply Unit converts electrical power into the voltages required by the computer's components.",
-
-    tag:"POWER",
-
-    link:
-    "https://www.corsair.com/us/en/explorer/diy-builder/power-supply-units/"
+name:"PSU",
+img:"https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=900&q=85",
+desc:"The power supply provides electrical power to computer components.",
+tip:"A build needs an appropriate PSU.",
+link:"https://www.corsair.com/"
 },
 
 {
-    name:"Cooling",
-    icon:"❄️",
-    image:img.pc,
-
-    desc:
-    "Cooling removes heat from components such as the CPU and GPU so they can operate safely and reliably.",
-
-    tag:"THERMALS",
-
-    link:
-    "https://www.intel.com/content/www/us/en/gaming/resources/how-to-keep-your-pc-cool.html"
+name:"Cooling",
+img:"https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=85",
+desc:"Cooling systems move heat away from components.",
+tip:"Heat management supports reliable operation.",
+link:"https://www.intel.com/content/www/us/en/gaming/resources/cpu-cooling.html"
 },
 
 {
-    name:"Monitor",
-    icon:"🖥️",
-    image:img.desk,
-
-    desc:
-    "A monitor is a visual output device. Resolution, panel type, size and refresh rate affect the viewing experience.",
-
-    tag:"OUTPUT",
-
-    link:
-    "https://www.displayport.org/"
+name:"Monitor",
+img:"https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=85",
+desc:"The monitor is an output device that presents visual information.",
+tip:"Display specifications include resolution and refresh rate.",
+link:"https://www.displayport.org/"
 }
 
 ];
 
 
-/* =========================================================
-   INTERFACES
-   ========================================================= */
-
-const interfaces = [
-
-{
-    name:"USB",
-    icon:"🔌",
-
-    desc:
-    "USB is used to connect peripherals and transfer data. Different USB generations and connectors can have different speeds and capabilities.",
-
-    tag:"DATA / POWER",
-
-    link:
-    "https://www.usb.org/"
-},
-
-{
-    name:"HDMI",
-    icon:"📺",
-
-    desc:
-    "HDMI carries digital audio and video between compatible devices such as a computer and display.",
-
-    tag:"AUDIO + VIDEO",
-
-    link:
-    "https://www.hdmi.org/"
-},
-
-{
-    name:"Ethernet",
-    icon:"🌐",
-
-    desc:
-    "Ethernet provides a wired network connection. It is commonly used when a stable connection is needed.",
-
-    tag:"NETWORK",
-
-    link:
-    "https://www.ieee802.org/3/"
-},
-
-{
-    name:"Audio Jack",
-    icon:"🎧",
-
-    desc:
-    "Audio connectors can be used for headphones, speakers, microphones and other audio equipment.",
-
-    tag:"AUDIO",
-
-    link:
-    "https://en.wikipedia.org/wiki/Phone_connector_(audio)"
-},
-
-{
-    name:"VGA",
-    icon:"🖥️",
-
-    desc:
-    "VGA is an older analogue video interface. It is still encountered on some older computers and display equipment.",
-
-    tag:"VIDEO",
-
-    link:
-    "https://en.wikipedia.org/wiki/VGA_connector"
-},
-
-{
-    name:"DisplayPort",
-    icon:"⚡",
-
-    desc:
-    "DisplayPort is a digital display interface designed to carry video and audio to compatible displays.",
-
-    tag:"DISPLAY",
-
-    link:
-    "https://www.displayport.org/"
-},
-
-{
-    name:"Bluetooth",
-    icon:"ᛒ",
-
-    desc:
-    "Bluetooth is a short-range wireless technology used to connect devices such as keyboards, mice, headphones and phones.",
-
-    tag:"WIRELESS",
-
-    link:
-    "https://www.bluetooth.com/"
-},
-
-{
-    name:"Wi-Fi",
-    icon:"📶",
-
-    desc:
-    "Wi-Fi provides wireless network connectivity using radio communication between compatible devices and access points.",
-
-    tag:"NETWORK",
-
-    link:
-    "https://www.wi-fi.org/"
-}
-
-];
-
-
-/* =========================================================
+/* ================================
    USER PROFILES
-   ========================================================= */
+================================ */
 
 const profiles = [
 
 {
-    name:"Gamer",
-    emoji:"🎮",
-    desc:"Gaming + graphics",
-    cpu:3,
-    ram:3,
-    storage:3,
-    gpu:3,
-    psu:3
+name:"Gamer",
+desc:"Gaming and graphics-heavy applications.",
+cpu:"i5",
+ram:"16",
+storage:"SSD",
+gpu:"Dedicated",
+psu:"650"
 },
 
 {
-    name:"Student",
-    emoji:"🎓",
-    desc:"Schoolwork + productivity",
-    cpu:2,
-    ram:2,
-    storage:2,
-    gpu:1,
-    psu:2
+name:"Secondary Student",
+desc:"Schoolwork, browsing, documents and multimedia.",
+cpu:"i3",
+ram:"8",
+storage:"SSD",
+gpu:"Integrated",
+psu:"450"
 },
 
 {
-    name:"Graphic Designer",
-    emoji:"🎨",
-    desc:"Creative + graphics",
-    cpu:3,
-    ram:3,
-    storage:3,
-    gpu:3,
-    psu:3
+name:"Graphic Designer",
+desc:"Creative applications, image editing and design.",
+cpu:"i7",
+ram:"32",
+storage:"SSD",
+gpu:"Dedicated",
+psu:"650"
 },
 
 {
-    name:"Office Worker",
-    emoji:"💼",
-    desc:"Documents + web + communication",
-    cpu:2,
-    ram:2,
-    storage:2,
-    gpu:1,
-    psu:2
+name:"Office Worker",
+desc:"Documents, spreadsheets, communication and web work.",
+cpu:"i3",
+ram:"8",
+storage:"SSD",
+gpu:"Integrated",
+psu:"450"
 }
 
 ];
 
 
-/* =========================================================
+/* ================================
    BUILDER OPTIONS
-   ========================================================= */
+================================ */
 
-const options = {
-
-    cpu:[
-        ["Entry CPU",1],
-        ["Mid-range CPU",2],
-        ["High-performance CPU",3]
-    ],
-
-    ram:[
-        ["8 GB",1],
-        ["16 GB",2],
-        ["32 GB",3]
-    ],
-
-    storage:[
-        ["256 GB HDD",1],
-        ["512 GB SSD",2],
-        ["1 TB SSD",3]
-    ],
-
-    gpu:[
-        ["Integrated Graphics",1],
-        ["Entry GPU",2],
-        ["Dedicated Performance GPU",3]
-    ],
-
-    psu:[
-        ["450 W",1],
-        ["650 W",2],
-        ["850 W",3]
-    ]
-
+const parts = {
+cpu:["i3","i5","i7"],
+ram:["8","16","32"],
+storage:["HDD","SSD"],
+gpu:["Integrated","Dedicated"],
+psu:["450","550","650"]
 };
 
 
-/* =========================================================
+/* ================================
    MISSIONS
-   ========================================================= */
+================================ */
 
 const missions = [
 
-{
-    title:"The Slow Student PC",
+[
+"Display Trouble",
+"The monitor says No Signal. The computer is on. Which connection should you check first?",
+"Check the physical display cable and the port on both ends."
+],
 
-    text:
-    "A student has many browser tabs, a document and a presentation open. The computer becomes sluggish. What upgrade should you investigate first?",
+[
+"Network Trouble",
+"A school computer has no wired network connection. Which physical connection should you inspect?",
+"Inspect the Ethernet cable and RJ-45 port."
+],
 
-    answer:"RAM",
+[
+"Storage Upgrade",
+"A student wants faster application loading and file access. Which storage type is the stronger choice?",
+"An SSD is generally the better choice for fast access."
+],
 
-    why:
-    "RAM affects how much active data and how many running applications the system can hold efficiently."
-},
+[
+"Gaming Build",
+"A gaming PC has a powerful CPU but only integrated graphics. What component could improve graphics performance?",
+"A dedicated GPU is designed for demanding graphics workloads."
+],
 
-{
-    title:"The Gaming Upgrade",
+[
+"Power Problem",
+"A new PC has components that require more power than the selected PSU can provide. What should you reconsider?",
+"Choose a PSU appropriate for the system's power requirements."
+],
 
-    text:
-    "A student wants smoother performance in a graphics-heavy game. Which component is most directly associated with rendering graphics?",
-
-    answer:"GPU",
-
-    why:
-    "The GPU is designed to process and render graphics."
-},
-
-{
-    title:"The Projector Problem",
-
-    text:
-    "A classroom computer must send digital video and audio to a compatible display. Which interface is a likely choice?",
-
-    answer:"HDMI",
-
-    why:
-    "HDMI is a digital interface that can carry video and audio."
-},
-
-{
-    title:"The Wired Network",
-
-    text:
-    "The lab needs a stable wired connection for network access. Which interface should you investigate?",
-
-    answer:"Ethernet",
-
-    why:
-    "Ethernet is used for wired networking."
-},
-
-{
-    title:"The Faster Boot",
-
-    text:
-    "A user's computer takes too long to boot and load applications. Which storage upgrade is likely to make the biggest difference?",
-
-    answer:"SSD",
-
-    why:
-    "An SSD generally provides much faster access than a traditional hard disk drive."
-}
+[
+"Multitasking",
+"A student frequently has many browser tabs and applications open. Which component directly affects available working memory?",
+"RAM provides temporary working space for active programs and data."
+]
 
 ];
 
 
-/* =========================================================
-   XP SYSTEM
-   ========================================================= */
+/* ================================
+   PRIOR KNOWLEDGE
+================================ */
 
-let xp = 0;
+const prior = [
 
-let portCount = 0;
+[
+"Which component is primarily responsible for executing program instructions?",
+"CPU",
+["RAM","CPU","Monitor","Keyboard"]
+],
 
-let buildDone = false;
+[
+"Which device is used to display visual output?",
+"Monitor",
+["Scanner","Monitor","Microphone","Router"]
+],
 
-let missionDone = 0;
+[
+"Which port is commonly used for wired networking?",
+"Ethernet RJ-45",
+["HDMI","Ethernet RJ-45","VGA","Audio"]
+],
+
+[
+"Which storage technology uses flash memory?",
+"SSD",
+["HDD","SSD","DVD","Tape"]
+],
+
+[
+"Which component is associated with graphics processing?",
+"GPU",
+["PSU","GPU","RAM","Motherboard"]
+],
+
+[
+"Which is temporary working memory?",
+"RAM",
+["SSD","RAM","ROM","GPU"]
+],
+
+[
+"Which interface commonly carries digital video and audio?",
+"HDMI",
+["HDMI","PS/2","Ethernet","3.5 mm Audio"]
+],
+
+[
+"Which component connects many internal computer components?",
+"Motherboard",
+["Motherboard","Monitor","Mouse","Speaker"]
+],
+
+[
+"What does a PSU provide to computer components?",
+"Electrical power",
+["Internet access","Electrical power","File storage","Graphics rendering"]
+],
+
+[
+"Which wireless technology is designed for short-range device communication?",
+"Bluetooth",
+["Bluetooth","VGA","Ethernet cable","HDMI"]
+]
+
+];
 
 
-function award(points,msg){
+/* ================================
+   FINAL BOSS QUESTIONS
+================================ */
 
-    const oldLevel =
-        Math.floor(xp / 100) + 1;
+const finalQs = [
 
-    xp += points;
+[
+"A student needs a computer for documents, web research and spreadsheets. Which combination is the most reasonable starting point?",
+"8 GB RAM, SSD and integrated graphics",
+[
+"8 GB RAM, SSD and integrated graphics",
+"64 GB RAM, dual high-end GPUs and 1600 W PSU",
+"4 GB RAM, HDD and dedicated workstation GPU",
+"32 GB RAM, dual high-end GPUs and 1000 W PSU"
+]
+],
 
-    updateXP();
+[
+"Which port is designed primarily for wired network connectivity?",
+"Ethernet RJ-45",
+["HDMI","Ethernet RJ-45","VGA","3.5 mm Audio"]
+],
 
-    const newLevel =
-        Math.floor(xp / 100) + 1;
+[
+"What is the main role of RAM?",
+"Temporary working space for active programs and data",
+[
+"Long-term file storage",
+"Temporary working space for active programs and data",
+"Power conversion",
+"Displaying images"
+]
+],
 
-    if(newLevel > oldLevel){
+[
+"Which component is especially important for demanding 3D graphics?",
+"Dedicated GPU",
+[
+"Dedicated GPU",
+"PSU only",
+"Keyboard",
+"Ethernet cable"
+]
+],
 
-        document
-            .getElementById("levelText")
-            .classList.add("level-up");
+[
+"Which storage device has no moving platters?",
+"SSD",
+["HDD","SSD","DVD drive","Tape drive"]
+],
 
-        toast(
-            "🎉 LEVEL UP! You reached Level "
-            + newLevel
-        );
+[
+"What should be considered when selecting a PSU?",
+"The system's power requirements",
+[
+"The monitor's wallpaper",
+"The keyboard layout",
+"The system's power requirements",
+"The number of browser bookmarks"
+]
+],
 
-        setTimeout(
-            () =>
-            document
-            .getElementById("levelText")
-            .classList.remove("level-up"),
-            700
-        );
+[
+"A connector is small, oval and reversible. Which is the best match?",
+"USB-C",
+["VGA","USB-C","RJ-45","DVI"]
+],
 
-    }
-    else if(msg){
+[
+"Why is cooling important in a computer?",
+"It helps manage heat produced by components",
+[
+"It stores files",
+"It provides internet access",
+"It helps manage heat produced by components",
+"It replaces RAM"
+]
+],
 
-        toast(
-            "+" +
-            points +
-            " XP • " +
-            msg
-        );
+[
+"Which board provides connections between many internal components?",
+"Motherboard",
+["Motherboard","Monitor","Mouse","Headset"]
+],
 
-    }
+[
+"A student wants fast boot and application loading. Which storage choice is generally better?",
+"SSD",
+["Floppy disk","SSD","Optical disc only","Magnetic tape"]
+]
 
-    burst();
+];
+
+
+/* ================================
+   XP
+================================ */
+
+function award(amount,message="XP earned!"){
+
+  state.xp += amount;
+
+  document.getElementById("xp").textContent=state.xp;
+
+  toast("+"+amount+" XP • "+message);
+
+  renderBadges();
 }
 
 
-function updateXP(){
+function toast(message){
 
-    document
-        .getElementById("xpText")
-        .textContent =
-        xp + " XP";
+  const box=document.getElementById("toast");
 
+  box.textContent=message;
 
-    const level =
-        Math.floor(xp / 100) + 1;
+  box.style.display="block";
 
+  clearTimeout(window.toastTimer);
 
-    document
-        .getElementById("levelText")
-        .textContent =
-        "LVL " + level;
-
-
-    document
-        .getElementById("xpBar")
-        .style.width =
-        (xp % 100) + "%";
-
-
-    if(portCount >= 4){
-
-        document
-            .getElementById("badgePorts")
-            .classList
-            .add("unlocked");
-
-    }
-
-
-    if(buildDone){
-
-        document
-            .getElementById("badgeBuild")
-            .classList
-            .add("unlocked");
-
-    }
-
-
-    if(missionDone >= 3){
-
-        document
-            .getElementById("badgeMission")
-            .classList
-            .add("unlocked");
-
-    }
-
-}
-
-
-function toast(text){
-
-    const element =
-        document.getElementById("toast");
-
-    element.textContent =
-        text;
-
-    element.classList.add("show");
-
-    clearTimeout(
-        window._toast
-    );
-
-    window._toast =
-        setTimeout(
-            () =>
-            element.classList.remove("show"),
-            1900
-        );
-
-}
-
-
-function burst(){
-
-    const root =
-        document.getElementById("particles");
-
-
-    for(
-        let i = 0;
-        i < 16;
-        i++
-    ){
-
-        const p =
-            document.createElement("i");
-
-
-        p.className =
-            "particle";
-
-
-        p.style.left =
-            (
-                50 +
-                Math.random()*10 -
-                5
-            ) + "%";
-
-
-        p.style.top =
-            (
-                45 +
-                Math.random()*10 -
-                5
-            ) + "%";
-
-
-        p.style.setProperty(
-            "--x",
-            (
-                Math.random()*260 -
-                130
-            ) + "px"
-        );
-
-
-        p.style.setProperty(
-            "--y",
-            (
-                Math.random()*-220 -
-                20
-            ) + "px"
-        );
-
-
-        root.appendChild(p);
-
-
-        setTimeout(
-            () => p.remove(),
-            950
-        );
-
-    }
+  window.toastTimer=setTimeout(()=>{
+    box.style.display="none";
+  },1800);
 
 }
 
 
-/* =========================================================
+/* ================================
    MODAL
-   ========================================================= */
+================================ */
 
-function openModal(
-    title,
-    kicker,
-    body,
-    image,
-    links=[]
-){
+function openModal(html){
 
-    document
-        .getElementById("modalTitle")
-        .textContent =
-        title;
+  document.getElementById("modalContent").innerHTML=html;
 
-
-    document
-        .getElementById("modalKicker")
-        .textContent =
-        kicker;
-
-
-    document
-        .getElementById("modalBody")
-        .innerHTML =
-        body;
-
-
-    document
-        .getElementById("modalImg")
-        .src =
-        image || img.pc;
-
-
-    document
-        .getElementById("modalLinks")
-        .innerHTML =
-        links
-        .map(
-            x =>
-            `
-            <a
-                class="btn small"
-                href="${x.url}"
-                target="_blank"
-                rel="noopener">
-
-                ${x.label} ↗
-
-            </a>
-            `
-        )
-        .join("");
-
-
-    document
-        .getElementById("modalBackdrop")
-        .classList
-        .add("show");
+  document.getElementById("modalBack").style.display="flex";
 
 }
 
 
-function closeModal(e){
+function closeModal(){
 
-    if(
-        !e ||
-        e.target.id ===
-        "modalBackdrop" ||
-        e.currentTarget.classList.contains(
-            "modal-close"
-        )
-    ){
-
-        document
-            .getElementById("modalBackdrop")
-            .classList
-            .remove("show");
-
-    }
+  document.getElementById("modalBack").style.display="none";
 
 }
 
 
-/* =========================================================
-   INTERFACE RENDER
-   ========================================================= */
+function backdropClose(event){
 
-function renderInterfaces(){
-
-    document
-        .getElementById("interfaceGrid")
-        .innerHTML =
-
-        interfaces
-        .map(
-            (x,i) =>
-            `
-
-            <div
-                class="card port"
-                onclick="openInterface(${i})">
-
-                <div class="port-icon">
-                    ${x.icon}
-                </div>
-
-                <h3>
-                    ${x.name}
-                </h3>
-
-                <p>
-                    ${x.desc}
-                </p>
-
-                <span class="tag">
-                    ${x.tag}
-                </span>
-
-            </div>
-
-            `
-        )
-        .join("");
+  if(event.target.id==="modalBack"){
+    closeModal();
+  }
 
 }
 
 
-function openInterface(i){
+/* ================================
+   PORT LAB
+================================ */
 
-    const x =
-        interfaces[i];
+function renderPorts(){
 
-    portCount++;
+  const grid=document.getElementById("portGrid");
 
+  grid.innerHTML=ports.map((p,i)=>`
 
-    award(
-        10,
-        x.name +
-        " interface scanned"
-    );
+    <div class="card portcard">
 
+      <div class="portthumb">
 
-    openModal(
+        <img
+          src="${p.img}"
+          alt="${p.name}">
 
-        x.name,
+      </div>
 
-        "INTERFACE LAB",
+      <div class="portbody">
 
-        `
-        <p>
-            ${x.desc}
-        </p>
+        <span class="tag">
+          ${p.type}
+        </span>
 
         <h3>
-            Technician Checklist
+          ${p.name}
         </h3>
 
-        <ul>
+        <p class="small">
+          ${p.desc}
+        </p>
 
-            <li>
-                Identify the type of signal or connection.
-            </li>
+        <button
+          class="btn"
+          onclick="openPort(${i})">
+          Enter Port Lab
+        </button>
 
-            <li>
-                Think about the device requiring the connection.
-            </li>
+      </div>
 
-            <li>
-                Compare the interface with alternatives.
-            </li>
+    </div>
 
-        </ul>
-
-        `,
-
-        img.pc,
-
-        [
-            {
-                label:
-                "Explore official information",
-
-                url:
-                x.link
-            }
-        ]
-
-    );
+  `).join("");
 
 }
 
 
-/* =========================================================
-   HARDWARE RENDER
-   ========================================================= */
+function openPort(i){
+
+  const p=ports[i];
+
+  state.ports.add(p.name);
+
+  award(5,"Port identified");
+
+  openModal(`
+
+    <h2>${p.name}</h2>
+
+    <span class="tag">
+      ${p.type}
+    </span>
+
+    <img
+      src="${p.img}"
+      alt="${p.name}">
+
+    <p>
+      ${p.desc}
+    </p>
+
+    <div class="card">
+
+      <b>
+        What should you recognize?
+      </b>
+
+      <p>
+        ${p.tip}
+      </p>
+
+      <b>
+        Typical cable / connection:
+      </b>
+
+      <p>
+        ${p.cable}
+      </p>
+
+    </div>
+
+    <p>
+      <a
+        href="${p.link}"
+        target="_blank"
+        rel="noopener">
+        Open reference source ↗
+      </a>
+    </p>
+
+    <hr>
+
+    <h3>
+      Port Quick Check
+    </h3>
+
+    <p>
+      Which statement best matches this interface?
+    </p>
+
+    <div class="options">
+
+      <button
+        class="opt"
+        onclick="portCheck(this,true)">
+        It matches the interface shown and its common use.
+      </button>
+
+      <button
+        class="opt"
+        onclick="portCheck(this,false)">
+        It is mainly a replacement for the computer's power supply.
+      </button>
+
+    </div>
+
+    <div
+      id="portFb"
+      class="feedback">
+    </div>
+
+  `);
+
+}
+
+
+function portCheck(button,correct){
+
+  document
+    .querySelectorAll("#modalContent .opt")
+    .forEach(x=>x.disabled=true);
+
+  button.classList.add(
+    correct ? "correct" : "wrong"
+  );
+
+  document.getElementById("portFb").textContent=
+    correct
+    ? "Correct. You recognized the interface."
+    : "Not quite. Review the port description.";
+
+  if(correct){
+    award(10,"Port Lab passed");
+  }
+
+  renderBadges();
+
+}
+
+
+/* ================================
+   HARDWARE LAB
+================================ */
 
 function renderHardware(){
 
-    document
-        .getElementById("hardwareGrid")
-        .innerHTML =
+  document.getElementById("hardwareGrid").innerHTML=
 
-        hardware
-        .map(
-            (x,i) =>
-            `
+    hardware.map((h,i)=>`
 
-            <article class="card">
+      <div class="card">
 
-                <img
-                    class="card-img"
-                    src="${x.image}"
-                    alt="${x.name}"
-                >
+        <img
+          class="hardwareimg"
+          src="${h.img}"
+          alt="${h.name}">
 
+        <span class="tag">
+          COMPONENT
+        </span>
 
-                <div class="card-body">
+        <h3>
+          ${h.name}
+        </h3>
 
-                    <h3>
-                        ${x.icon}
-                        ${x.name}
-                    </h3>
+        <p class="small">
+          ${h.desc}
+        </p>
 
+        <button
+          class="btn alt"
+          onclick="openHardware(${i})">
+          Explore Component
+        </button>
 
-                    <p>
-                        ${x.desc}
-                    </p>
+      </div>
 
-
-                    <span class="tag">
-                        ${x.tag}
-                    </span>
-
-
-                    <div class="card-actions">
-
-
-                        <button
-                            class="btn small"
-                            onclick="openHardware(${i})">
-
-                            🔍 Intel
-
-                        </button>
-
-
-                        <a
-                            class="btn small"
-                            href="${x.link}"
-                            target="_blank"
-                            rel="noopener">
-
-                            Real Hardware ↗
-
-                        </a>
-
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            `
-        )
-        .join("");
+    `).join("");
 
 }
 
 
 function openHardware(i){
 
-    const x =
-        hardware[i];
+  const h=hardware[i];
 
+  state.hardware.add(h.name);
 
-    award(
-        10,
-        x.name +
-        " identified"
-    );
+  award(5,"Hardware explored");
 
+  openModal(`
 
-    openModal(
+    <h2>${h.name}</h2>
 
-        x.name,
+    <img
+      src="${h.img}"
+      alt="${h.name}">
 
-        "HARDWARE LAB",
+    <p>
+      ${h.desc}
+    </p>
 
-        `
+    <div class="card">
 
-        <p>
-            ${x.desc}
-        </p>
+      <b>
+        CSEC Study Tip
+      </b>
 
+      <p>
+        ${h.tip}
+      </p>
 
-        <h3>
-            Technician Thought
-        </h3>
+    </div>
 
+    <p>
 
-        <p>
+      <a
+        href="${h.link}"
+        target="_blank"
+        rel="noopener">
+        Open reference source ↗
+      </a>
 
-            When specifying a computer,
-            ask what job the component must
-            perform and how its specification
-            affects the user's needs.
+    </p>
 
-        </p>
+    <button
+      class="btn"
+      onclick="hardwareCheck(${i})">
+      Take Component Check
+    </button>
 
-        `,
-
-        x.image,
-
-        [
-            {
-                label:
-                "Open manufacturer/reference",
-
-                url:
-                x.link
-            }
-        ]
-
-    );
+  `);
 
 }
 
 
-/* =========================================================
+function hardwareCheck(i){
+
+  const h=hardware[i];
+
+  openModal(`
+
+    <h2>
+      ${h.name} Check
+    </h2>
+
+    <p>
+      Which idea best represents the role of the ${h.name}?
+    </p>
+
+    <div class="options">
+
+      <button
+        class="opt"
+        onclick="componentAnswer(this,true)">
+        The role described in the learning card.
+      </button>
+
+      <button
+        class="opt"
+        onclick="componentAnswer(this,false)">
+        It is only used to connect a computer to a wall outlet.
+      </button>
+
+    </div>
+
+    <div
+      id="compFb"
+      class="feedback">
+    </div>
+
+  `);
+
+}
+
+
+function componentAnswer(button,correct){
+
+  document
+    .querySelectorAll("#modalContent .opt")
+    .forEach(x=>x.disabled=true);
+
+  button.classList.add(
+    correct ? "correct" : "wrong"
+  );
+
+  document.getElementById("compFb").textContent=
+    correct
+    ? "Correct. Component knowledge unlocked."
+    : "Review the component role, then continue.";
+
+  if(correct){
+    award(10,"Component Check passed");
+  }
+
+}
+
+
+/* ================================
    USER PROFILES
-   ========================================================= */
+================================ */
 
 function renderProfiles(){
 
-    document
-        .getElementById("needsGrid")
-        .innerHTML =
+  document.getElementById("profileGrid").innerHTML=
 
-        profiles
-        .map(
-            (x,i) =>
-            `
+    profiles.map((p,i)=>`
 
-            <button
-                class="need"
-                id="need${i}"
-                onclick="selectProfile(${i})">
+      <div
+        class="card profile"
+        onclick="chooseTarget(${i})">
 
-                <div class="emoji">
-                    ${x.emoji}
-                </div>
+        <span class="tag">
+          USER PROFILE
+        </span>
 
-                <h3>
-                    ${x.name}
-                </h3>
+        <strong>
+          ${p.name}
+        </strong>
 
-                <p>
-                    ${x.desc}
-                </p>
+        <p class="small">
+          ${p.desc}
+        </p>
 
-            </button>
+      </div>
 
-            `
-        )
-        .join("");
+    `).join("");
 
 
-    document
-        .getElementById("target")
-        .innerHTML =
+  document.getElementById("target").innerHTML=
 
-        profiles
-        .map(
-            (x,i) =>
-            `
-            <option value="${i}">
-                ${x.name}
-            </option>
-            `
-        )
-        .join("");
+    profiles.map((p,i)=>`
+
+      <option value="${i}">
+        ${p.name}
+      </option>
+
+    `).join("");
 
 }
 
 
-function selectProfile(i){
-
-    document
-        .querySelectorAll(".need")
-        .forEach(
-            e =>
-            e.classList.remove("active")
-        );
-
-
-    document
-        .getElementById(
-            "need" + i
-        )
-        .classList
-        .add("active");
-
-
-    const p =
-        profiles[i];
-
-
-    const names = {
-
-        1:"entry-level",
-
-        2:"balanced",
-
-        3:"high-performance"
-
-    };
-
-
-    document
-        .getElementById("needBrief")
-        .innerHTML =
-
-        `
-
-        <strong
-            style="color:white">
-
-            ${p.emoji}
-            ${p.name}
-
-        </strong>
-
-        needs a
-
-        <strong
-            style="color:#71C7FF">
-
-            ${names[p.cpu]}
-
-        </strong>
-
-        CPU,
-
-        ${p.ram === 3
-            ? "32 GB"
-            : p.ram === 2
-                ? "16 GB"
-                : "8 GB"
-        }
-
-        RAM,
-
-        ${p.storage === 3
-            ? "1 TB SSD"
-            : p.storage === 2
-                ? "512 GB SSD"
-                : "256 GB storage"
-        },
-
-        and
-
-        ${p.gpu === 3
-            ? "dedicated performance graphics"
-            : "integrated/entry graphics"
-        }.
-
-        Now try to build it in the PC Builder.
-
-        `;
-
-
-    document
-        .getElementById("target")
-        .value =
-        i;
-
-
-    updateBuild();
-
-
-    award(
-        5,
-        p.name +
-        " profile selected"
-    );
-
-}
-
-
-/* =========================================================
+/* ================================
    BUILDER
-   ========================================================= */
+================================ */
 
-function populateSelect(
-    id,
-    arr
-){
+function fillSelect(id,array){
 
-    document
-        .getElementById(id)
-        .innerHTML =
+  document.getElementById(id).innerHTML=
 
-        arr
-        .map(
-            x =>
-            `
-            <option value="${x[1]}">
-                ${x[0]}
-            </option>
-            `
-        )
-        .join("");
+    array.map(item=>`
+
+      <option value="${item}">
+        ${item}
+      </option>
+
+    `).join("");
 
 }
 
 
-[
-    "cpu",
-    "ram",
-    "storage",
-    "gpu",
-    "psu"
-]
-.forEach(
-    k =>
-    populateSelect(
-        k,
-        options[k]
-    )
-);
+function initBuilder(){
+
+  for(const key in parts){
+    fillSelect(key,parts[key]);
+  }
+
+  selectProfile();
+
+}
+
+
+function chooseTarget(index){
+
+  document.getElementById("target").value=index;
+
+  selectProfile();
+
+  document
+    .getElementById("builder")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+function selectProfile(){
+
+  const profile=
+    profiles[
+      +document.getElementById("target").value
+    ];
+
+  ["cpu","ram","storage","gpu","psu"]
+    .forEach(key=>{
+      document.getElementById(key).value=profile[key];
+    });
+
+  updateBuild();
+
+}
 
 
 function updateBuild(){
 
-    const values =
+  const values={
 
-        [
-            "cpu",
-            "ram",
-            "storage",
-            "gpu",
-            "psu"
-        ]
-        .map(
-            k =>
-            +document
-            .getElementById(k)
-            .value
-        );
+    cpu:document.getElementById("cpu").value,
+
+    ram:document.getElementById("ram").value,
+
+    storage:document.getElementById("storage").value,
+
+    gpu:document.getElementById("gpu").value,
+
+    psu:document.getElementById("psu").value
+
+  };
 
 
-    const target =
-        profiles[
-            +document
-            .getElementById("target")
-            .value
-        ];
+  const profile=
+    profiles[
+      +document.getElementById("target").value
+    ];
 
 
-    let fit = 0;
+  let score=0;
 
 
-    const keys =
-        [
-            "cpu",
-            "ram",
-            "storage",
-            "gpu",
-            "psu"
-        ];
+  Object.keys(values).forEach(key=>{
+
+    if(values[key]===profile[key]){
+      score+=20;
+    }
+
+  });
 
 
-    keys.forEach(
-        (k,i) => {
+  document.getElementById("fit").textContent=
+    score+"%";
 
-            fit +=
-                Math.max(
-                    0,
-                    100 -
-                    Math.abs(
-                        values[i] -
-                        target[k]
-                    ) * 45
-                );
 
-        }
+  document.getElementById("status").textContent=
+
+    score>=80
+    ? "Excellent"
+    : score>=60
+    ? "Usable"
+    : "Needs Work";
+
+
+  document
+    .getElementById("pcpu")
+    .classList.toggle(
+      "on",
+      !!values.cpu
     );
 
+  document
+    .getElementById("pram")
+    .classList.toggle(
+      "on",
+      !!values.ram
+    );
 
-    fit =
-        Math.round(
-            fit / 5
-        );
+  document
+    .getElementById("pgpu")
+    .classList.toggle(
+      "on",
+      !!values.gpu
+    );
 
+  document
+    .getElementById("pstorage")
+    .classList.toggle(
+      "on",
+      !!values.storage
+    );
 
-    document
-        .getElementById("fitScore")
-        .textContent =
-        fit + "%";
-
-
-    document
-        .getElementById("fitBar")
-        .style.width =
-        fit + "%";
-
-
-    document
-        .getElementById("buildSpecs")
-        .textContent =
-
-        `${options.cpu[values[0]-1][0]} •
-        ${options.ram[values[1]-1][0]} •
-        ${options.storage[values[2]-1][0]} •
-        ${options.gpu[values[3]-1][0]} •
-        ${options.psu[values[4]-1][0]}`;
+  document
+    .getElementById("ppsu")
+    .classList.toggle(
+      "on",
+      !!values.psu
+    );
 
 }
 
 
-[
-    "cpu",
-    "ram",
-    "storage",
-    "gpu",
-    "psu",
-    "target"
-]
-.forEach(
-    k =>
-    document
-    .getElementById(k)
-    .addEventListener(
-        "change",
-        updateBuild
-    )
-);
+function gradeBuild(){
 
+  const score=
+    parseInt(
+      document.getElementById("fit").textContent
+    );
 
-function evaluateBuild(){
+  const earned=
+    Math.round(score/10);
 
-    updateBuild();
+  document.getElementById("buildxp").textContent=
+    earned*5;
 
+  if(score>=80){
 
-    const fit =
-        parseInt(
-            document
-            .getElementById("fitScore")
-            .textContent
-        );
+    award(
+      earned*5,
+      "Build Challenge passed"
+    );
 
+  }else{
 
-    const el =
-        document
-        .getElementById("buildMessage");
+    toast(
+      "Improve the build to reach 80%+"
+    );
 
-
-    if(fit >= 90){
-
-        el.className =
-            "build-status compatible";
-
-        el.textContent =
-            "SYSTEM OPTIMIZED • Excellent match for the selected user.";
-
-        award(
-            40,
-            "PC build passed diagnostics"
-        );
-
-        buildDone =
-            true;
-
-    }
-
-    else if(fit >= 70){
-
-        el.className =
-            "build-status warning";
-
-        el.textContent =
-            "SYSTEM USABLE • There is room to improve the match.";
-
-        award(
-            20,
-            "PC build partially passed"
-        );
-
-    }
-
-    else{
-
-        el.className =
-            "build-status bad";
-
-        el.textContent =
-            "SPEC MISMATCH • Reconsider the user's needs.";
-
-        award(
-            5,
-            "Build needs revision"
-        );
-
-    }
-
-
-    updateXP();
+  }
 
 }
 
 
 function randomBuild(){
 
-    [
-        "cpu",
-        "ram",
-        "storage",
-        "gpu",
-        "psu"
-    ]
-    .forEach(
-        k =>
-        document
-        .getElementById(k)
-        .selectedIndex =
-        Math.floor(
-            Math.random() * 3
-        )
-    );
+  ["cpu","ram","storage","gpu","psu"]
+    .forEach(key=>{
 
+      const array=parts[key];
 
-    updateBuild();
+      document.getElementById(key).value=
+        array[
+          Math.floor(
+            Math.random()*array.length
+          )
+        ];
 
+    });
 
-    toast(
-        "🎲 Random loadout generated"
-    );
+  updateBuild();
+
+  toast("Random loadout generated");
 
 }
 
 
-/* =========================================================
+/* ================================
    MISSIONS
-   ========================================================= */
+================================ */
 
 function renderMissions(){
 
-    document
-        .getElementById("missionGrid")
-        .innerHTML =
+  document.getElementById("missionGrid").innerHTML=
 
-        missions
-        .map(
-            (m,i) =>
-            `
+    missions.map((m,i)=>`
 
-            <article
-                class="mission"
-                onclick="openMission(${i})">
+      <div
+        class="card mission"
+        onclick="openMission(${i})">
 
-                <div class="num">
+        <span class="tag">
+          MISSION ${i+1}
+        </span>
 
-                    MISSION
-                    ${String(i+1).padStart(2,"0")}
+        <h3>
+          ${m[0]}
+        </h3>
 
-                </div>
+        <p class="small">
+          ${m[1]}
+        </p>
 
+        <button class="btn dark">
+          Investigate
+        </button>
 
-                <h3>
-                    ${m.title}
-                </h3>
+      </div>
 
-
-                <p>
-                    ${m.text}
-                </p>
-
-            </article>
-
-            `
-        )
-        .join("");
+    `).join("");
 
 }
 
 
 function openMission(i){
 
-    const m =
-        missions[i];
+  const mission=missions[i];
 
+  openModal(`
 
-    openModal(
+    <span class="tag">
+      MISSION ${i+1}
+    </span>
 
-        m.title,
+    <h2>
+      ${mission[0]}
+    </h2>
 
-        "TECHNICIAN MISSION",
+    <p>
+      ${mission[1]}
+    </p>
 
-        `
+    <button
+      class="btn"
+      onclick="missionAnswer(${i},this)">
+      Submit Diagnosis
+    </button>
 
-        <p>
-            ${m.text}
-        </p>
+    <div
+      id="missionFb"
+      class="feedback">
+    </div>
 
-
-        <p>
-
-            <strong>
-                Your mission:
-            </strong>
-
-            Choose the hardware/interface
-            that best addresses the problem.
-
-        </p>
-
-
-        <div class="actions">
-
-            <button
-                class="btn coral"
-                onclick="missionAnswer(${i})">
-
-                🕵️ Reveal Answer
-
-            </button>
-
-        </div>
-
-        `,
-
-        img.pc,
-
-        []
-
-    );
+  `);
 
 }
 
 
-function missionAnswer(i){
+function missionAnswer(i,button){
 
-    const m =
-        missions[i];
+  button.disabled=true;
+
+  document.getElementById("missionFb").textContent=
+    missions[i][2];
+
+  state.mission++;
+
+  award(
+    15,
+    "Mission solved"
+  );
+
+  renderBadges();
+
+}
 
 
-    missionDone++;
+/* ================================
+   BADGES
+================================ */
+
+function renderBadges(){
+
+  const list=[
+
+    [
+      "Port Scout",
+      state.ports.size>=4,
+      "Identify 4 ports"
+    ],
+
+    [
+      "Port Master",
+      state.ports.size>=8,
+      "Identify all 8 interfaces"
+    ],
+
+    [
+      "Hardware Explorer",
+      state.hardware.size>=4,
+      "Explore 4 components"
+    ],
+
+    [
+      "Builder",
+      state.xp>=100,
+      "Earn 100 XP"
+    ],
+
+    [
+      "Technician",
+      state.mission>=3,
+      "Solve 3 missions"
+    ],
+
+    [
+      "Final Boss",
+      state.finalScore>=7,
+      "Score 7/10 or better"
+    ]
+
+  ];
+
+
+  document.getElementById("badges").innerHTML=
+
+    list.map(item=>`
+
+      <div class="badge ${item[1]?"":"locked"}">
+
+        ${item[1]?"🏆":"🔒"}
+
+        ${item[0]}
+
+        <br>
+
+        <span class="small">
+          ${item[2]}
+        </span>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+/* ================================
+   PRIOR QUIZ
+================================ */
+
+let priorIndex=0;
+
+
+function renderPrior(){
+
+  const question=
+    prior[priorIndex];
+
+
+  document.getElementById("priorQuestion").textContent=
+    (priorIndex+1)+". "+question[0];
+
+
+  document.getElementById("priorProgress").style.width=
+    (priorIndex/prior.length*100)+"%";
+
+
+  document.getElementById("priorOptions").innerHTML=
+
+    question[2].map(option=>`
+
+      <button
+        class="opt"
+        onclick="answerPrior(this,'${encodeURIComponent(option)}')">
+
+        ${option}
+
+      </button>
+
+    `).join("");
+
+
+  document.getElementById("priorFeedback").textContent="";
+
+  document.getElementById("priorNext").style.display="none";
+
+}
+
+
+function answerPrior(button,value){
+
+  document
+    .querySelectorAll("#priorOptions .opt")
+    .forEach(x=>x.disabled=true);
+
+
+  const answer=
+    decodeURIComponent(value);
+
+
+  const correct=
+    answer===prior[priorIndex][1];
+
+
+  button.classList.add(
+    correct?"correct":"wrong"
+  );
+
+
+  document.getElementById("priorFeedback").textContent=
+
+    correct
+    ? "Correct!"
+    : "The correct answer is "+prior[priorIndex][1]+".";
+
+
+  if(correct){
+
+    state.priorScore++;
+
+    award(
+      10,
+      "Prior Knowledge"
+    );
+
+  }
+
+
+  document.getElementById("priorNext").style.display=
+    "inline-block";
+
+}
+
+
+function nextPrior(){
+
+  priorIndex++;
+
+
+  if(priorIndex>=prior.length){
+
+    document.getElementById("priorQuestion").textContent=
+      `Prior Knowledge complete: ${state.priorScore}/10`;
+
+
+    document.getElementById("priorOptions").innerHTML="";
+
+
+    document.getElementById("priorNext").style.display=
+      "none";
+
+
+    document.getElementById("priorProgress").style.width=
+      "100%";
 
 
     award(
-        15,
-        "Mission completed"
+      20,
+      "Prior Knowledge complete"
+    );
+
+    return;
+
+  }
+
+
+  renderPrior();
+
+}
+
+
+/* ================================
+   FINAL BOSS
+================================ */
+
+let finalIndex=0;
+
+
+function startFinal(){
+
+  finalIndex=0;
+
+  state.finalScore=0;
+
+  document.getElementById("finalStart").style.display=
+    "none";
+
+  renderFinal();
+
+}
+
+
+function renderFinal(){
+
+  const question=
+    finalQs[finalIndex];
+
+
+  document.getElementById("finalQuestion").textContent=
+    (finalIndex+1)+". "+question[0];
+
+
+  document.getElementById("finalProgress").style.width=
+    (finalIndex/finalQs.length*100)+"%";
+
+
+  document.getElementById("finalOptions").innerHTML=
+
+    question[2].map(option=>`
+
+      <button
+        class="opt"
+        onclick="answerFinal(this,'${encodeURIComponent(option)}')">
+
+        ${option}
+
+      </button>
+
+    `).join("");
+
+
+  document.getElementById("finalFeedback").textContent="";
+
+
+  document.getElementById("finalNext").style.display=
+    "none";
+
+}
+
+
+function answerFinal(button,value){
+
+  document
+    .querySelectorAll("#finalOptions .opt")
+    .forEach(x=>x.disabled=true);
+
+
+  const answer=
+    decodeURIComponent(value);
+
+
+  const correct=
+    answer===finalQs[finalIndex][1];
+
+
+  button.classList.add(
+    correct?"correct":"wrong"
+  );
+
+
+  document.getElementById("finalFeedback").textContent=
+
+    correct
+    ? "Correct."
+    : "Review the concept: "+finalQs[finalIndex][1]+".";
+
+
+  if(correct){
+    state.finalScore++;
+  }
+
+
+  document.getElementById("finalNext").style.display=
+    "inline-block";
+
+}
+
+
+function nextFinal(){
+
+  finalIndex++;
+
+
+  if(finalIndex>=finalQs.length){
+
+    document.getElementById("finalQuestion").textContent=
+      `Final Boss complete: ${state.finalScore}/10`;
+
+
+    document.getElementById("finalOptions").innerHTML="";
+
+
+    document.getElementById("finalProgress").style.width=
+      "100%";
+
+
+    document.getElementById("finalNext").style.display=
+      "none";
+
+
+    award(
+      state.finalScore*10,
+      "Final Boss complete"
     );
 
 
-    openModal(
-
-        m.title,
-
-        "MISSION COMPLETE",
-
-        `
-
-        <p>
-
-            <strong>
-                Best answer:
-            </strong>
-
-            ${m.answer}
-
-        </p>
-
-
-        <p>
-            ${m.why}
-        </p>
-
-
-        <p>
-
-            <strong>
-                Exam habit:
-            </strong>
-
-            Always connect your choice
-            to the user's stated need.
-
-        </p>
-
-        `,
-
-        img.pc,
-
-        []
-
-    );
-
-}
-
-
-/* =========================================================
-   PRIOR KNOWLEDGE QUIZ
-   ========================================================= */
-
-const quizBank = [
-
-{
-    q:
-    "Which component is primarily responsible for executing program instructions?",
-
-    o:
-    [
-        "CPU",
-        "Monitor",
-        "Keyboard",
-        "Printer"
-    ],
-
-    a:0
-},
-
-{
-    q:
-    "Which device is an example of secondary storage?",
-
-    o:
-    [
-        "RAM",
-        "SSD",
-        "CPU",
-        "Cache"
-    ],
-
-    a:1
-},
-
-{
-    q:
-    "Which interface commonly carries digital video and audio to a display?",
-
-    o:
-    [
-        "HDMI",
-        "PS/2",
-        "Ethernet",
-        "VGA"
-    ],
-
-    a:0
-},
-
-{
-    q:
-    "Which component provides temporary working memory for active programs?",
-
-    o:
-    [
-        "PSU",
-        "RAM",
-        "GPU",
-        "SSD"
-    ],
-
-    a:1
-},
-
-{
-    q:
-    "Which interface is primarily associated with wired networking?",
-
-    o:
-    [
-        "Ethernet",
-        "HDMI",
-        "Audio jack",
-        "DisplayPort"
-    ],
-
-    a:0
-},
-
-{
-    q:
-    "Which component is most directly associated with rendering graphics?",
-
-    o:
-    [
-        "GPU",
-        "PSU",
-        "RAM",
-        "Motherboard"
-    ],
-
-    a:0
-},
-
-{
-    q:
-    "Which component connects many internal computer components together?",
-
-    o:
-    [
-        "Motherboard",
-        "Monitor",
-        "Printer",
-        "Webcam"
-    ],
-
-    a:0
-},
-
-{
-    q:
-    "Which storage technology is generally faster for booting and loading applications?",
-
-    o:
-    [
-        "SSD",
-        "Floppy disk",
-        "Optical disc",
-        "Tape"
-    ],
-
-    a:0
-},
-
-{
-    q:
-    "Which component converts electrical power into usable power for computer components?",
-
-    o:
-    [
-        "PSU",
-        "CPU",
-        "GPU",
-        "RAM"
-    ],
-
-    a:0
-},
-
-{
-    q:
-    "A student needs a computer mainly for documents, web browsing and presentations. Which approach is most appropriate?",
-
-    o:
-    [
-        "Match balanced specifications to the tasks",
-        "Choose the most expensive GPU possible",
-        "Ignore RAM",
-        "Choose components randomly"
-    ],
-
-    a:0
-}
-
-];
-
-
-let quiz = [];
-
-let qi = 0;
-
-let qscore = 0;
-
-
-function shuffle(array){
-
-    return [...array]
-        .sort(
-            () =>
-            Math.random() - .5
-        );
-
-}
-
-
-function restartQuiz(){
-
-    quiz =
-        shuffle(
-            quizBank
-        );
-
-    qi = 0;
-
-    qscore = 0;
-
-
-    document
-        .getElementById("badgeQuiz")
-        .classList
-        .remove("unlocked");
-
-
-    renderQuiz();
-
-}
-
-
-function renderQuiz(){
-
-    if(qi >= quiz.length){
-
-        document
-            .getElementById("quizCard")
-            .innerHTML =
-
-            `
-
-            <div class="kicker">
-                SCAN COMPLETE
-            </div>
-
-
-            <h2>
-                ${qscore}/10
-            </h2>
-
-
-            <p class="sub">
-
-                Your prior-knowledge scan
-                is complete.
-
-                Now enter the Hardware Lab
-                and improve your score.
-
-            </p>
-
-
-            <button
-                class="btn primary"
-                onclick="restartQuiz()">
-
-                ↻ Take a New Shuffled Quiz
-
-            </button>
-
-            `;
-
-
-        document
-            .getElementById("quizScore")
-            .textContent =
-            qscore + "/10";
-
-
-        if(qscore >= 7){
-
-            document
-                .getElementById("badgeQuiz")
-                .classList
-                .add("unlocked");
-
-
-            award(
-                30,
-                "Prior knowledge scan complete"
-            );
-
-        }
-
-
-        return;
-
-    }
-
-
-    const q =
-        quiz[qi];
-
-
-    document
-        .getElementById("quizScore")
-        .textContent =
-        qscore + "/10";
-
-
-    document
-        .getElementById("quizCard")
-        .innerHTML =
-
-        `
-
-        <div class="kicker">
-
-            QUESTION
-            ${qi+1}
-            OF 10
-
-        </div>
-
-
-        <h3
-            style="
-                font-size:1.35rem;
-                line-height:1.45;
-            ">
-
-            ${q.q}
-
-        </h3>
-
-
-        <div>
-
-            ${q.o
-                .map(
-                    (x,i) =>
-                    `
-
-                    <button
-                        class="option"
-                        onclick="answerQuiz(${i})">
-
-                        ${String.fromCharCode(65+i)}.
-                        ${x}
-
-                    </button>
-
-                    `
-                )
-                .join("")
-            }
-
-        </div>
-
-
-        <div
-            class="quiz-feedback"
-            id="qFeedback">
-
-        </div>
-
-        `;
-
-}
-
-
-function answerQuiz(i){
-
-    const q =
-        quiz[qi];
-
-
-    const buttons =
-        [
-            ...document
-            .querySelectorAll(".option")
-        ];
-
-
-    buttons.forEach(
-        b =>
-        b.disabled = true
-    );
-
-
-    buttons[q.a]
-        .classList
-        .add("correct");
-
-
-    if(i === q.a){
-
-        qscore++;
-
-
-        award(
-            5,
-            "Correct answer"
-        );
-
-    }
-
-    else{
-
-        buttons[i]
-            .classList
-            .add("wrong");
-
-
-        toast(
-            "Not this time — review the highlighted answer."
-        );
-
-    }
-
-
-    document
-        .getElementById("qFeedback")
-        .textContent =
-
-        i === q.a
-            ? "Correct. Great work!"
-            : "The highlighted option is the best answer.";
+    renderBadges();
 
 
     setTimeout(
-        () => {
-
-            qi++;
-
-            renderQuiz();
-
-        },
-
-        850
+      ()=>openCertificate(),
+      350
     );
+
+    return;
+
+  }
+
+
+  renderFinal();
 
 }
 
 
-/* =========================================================
-   INITIALISE
-   ========================================================= */
+/* ================================
+   CERTIFICATE
+================================ */
 
-renderInterfaces();
+function openCertificate(){
+
+  const score=
+    Math.max(
+      state.finalScore*10,
+      Math.round(
+        (state.priorScore/10)*100
+      )
+    );
+
+
+  let rank=
+    score>=90
+    ? "Master Technician"
+    : score>=80
+    ? "Hardware Technician"
+    : score>=70
+    ? "Junior Technician"
+    : "Lab Trainee";
+
+
+  openModal(`
+
+    <div id="certificatePrint">
+
+      <div class="certificate">
+
+        <div class="certseal">
+          🏆
+        </div>
+
+        <div style="letter-spacing:3px;font-weight:bold">
+          CSEC IT LEARNING LAB
+        </div>
+
+        <h2>
+          Certificate of Completion
+        </h2>
+
+        <p>
+          This certifies that
+        </p>
+
+        <div class="certname">
+          Student Name
+        </div>
+
+        <p>
+          has successfully completed the
+        </p>
+
+        <h3>
+          HARDWARE & COMPUTER SYSTEMS CHALLENGE
+        </h3>
+
+        <p>
+          demonstrating learning in ports and cables,
+          hardware components, computer specifications,
+          PC building and troubleshooting.
+        </p>
+
+        <h3>
+          Final Score: ${score}%
+        </h3>
+
+        <p>
+          <b>
+            Rank: ${rank}
+          </b>
+        </p>
+
+        <p>
+          Date:
+          ${new Date().toLocaleDateString()}
+        </p>
+
+      </div>
+
+
+      <br>
+
+
+      <div
+        style="
+          display:flex;
+          gap:10px;
+          justify-content:center;
+          flex-wrap:wrap;
+        ">
+
+        <button
+          class="btn gold"
+          onclick="window.print()">
+
+          Print / Save as PDF
+
+        </button>
+
+
+        <button
+          class="btn"
+          onclick="promptName()">
+
+          Enter Student Name
+
+        </button>
+
+      </div>
+
+    </div>
+
+  `);
+
+}
+
+
+function promptName(){
+
+  const name=
+    prompt(
+      "Enter the student's name:"
+    );
+
+
+  if(!name){
+    return;
+  }
+
+
+  document.querySelector(
+    ".certname"
+  ).textContent=name;
+
+}
+
+
+/* ================================
+   START GAME
+================================ */
+
+renderPorts();
 
 renderHardware();
 
 renderProfiles();
 
+initBuilder();
+
 renderMissions();
 
-restartQuiz();
+renderBadges();
 
-updateBuild();
+renderPrior();
 
 </script>
 
